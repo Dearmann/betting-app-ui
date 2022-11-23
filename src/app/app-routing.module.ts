@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: "", component: GameListComponent },
-  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: "profile", component: ProfileComponent, data: { roles: ['USER', 'ADMIN'] } },
   { path: "**", redirectTo: "" }
 ];
 
