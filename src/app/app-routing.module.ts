@@ -5,9 +5,21 @@ import { GameListComponent } from './game-list/game-list.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
-  { path: "", component: GameListComponent },
-  { path: "profile", component: ProfileComponent, data: { roles: ['USER', 'ADMIN'] } },
-  { path: "**", redirectTo: "" }
+  {
+    path: '',
+    component: GameListComponent,
+    title: 'Betting - Games'
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    data: { roles: ['USER', 'ADMIN'] },
+    title: 'Betting - Profile'
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
