@@ -17,10 +17,25 @@
       <mat-icon>military_tech</mat-icon>
       Ranking
     </button>
-    <button routerLink="/profile" routerLinkActive="active" mat-raised-button color="primary"
+    <button *ngIf="isLoggedIn" routerLink="/profile" routerLinkActive="active" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with share icon">
       <mat-icon>account_circle</mat-icon>
       Profile
+    </button>
+    <button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with share icon">
+      <mat-icon>logout</mat-icon>
+      Sign Out
+    </button>
+    <button *ngIf="!isLoggedIn" (click)="login()" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with share icon">
+      <mat-icon>login</mat-icon>
+      Sign In
+    </button>
+    <button *ngIf="!isLoggedIn" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with share icon">
+      <mat-icon>how_to_reg</mat-icon>
+      Sign Up
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
