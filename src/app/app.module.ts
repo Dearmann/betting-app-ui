@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { GameListComponent } from './game-list/game-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { KeycloakInit } from './auth/keycloak-init.factory';
+import { keycloakInit } from './auth/keycloak-init.factory';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
@@ -34,7 +34,7 @@ import { ProfileComponent } from './profile/profile.component';
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: KeycloakInit,
+      useFactory: keycloakInit,
       multi: true,
       deps: [KeycloakService],
     }
