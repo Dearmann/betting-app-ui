@@ -1,7 +1,10 @@
 <div class="game-list">
-  <mat-card>
-    <mat-card-content>
-      <img [src]="getGameLogoUrl()" class="game-logo">
+  <mat-card *ngFor="let game of games; index as i;" class="game-card">
+    <mat-card-title *ngIf="!game.logoUrl">
+      {{game.name}}
+    </mat-card-title>
+    <mat-card-content *ngIf="game.logoUrl">
+      <img class="game-logo" [src]="getGameLogoUrl(game)">
     </mat-card-content>
   </mat-card>
 </div>
