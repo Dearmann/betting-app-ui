@@ -1,5 +1,5 @@
 <div class="game-list">
-  <mat-card *ngFor="let game of games; index as i;" class="game-card">
+  <mat-card *ngFor="let game of games; index as i;" (click)="gameClicked(game.id)" class="game-card">
     <mat-card-title *ngIf="!game.logoUrl">
       {{game.name}}
     </mat-card-title>
