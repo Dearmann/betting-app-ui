@@ -8,12 +8,14 @@ import { KeycloakService } from 'keycloak-angular';
 })
 export class HeaderComponent {
 
-  public isLoggedIn = false;
+  public isLoggedIn: Boolean = false;
+  public isAdmin: Boolean = false;
 
   constructor(private readonly keycloak: KeycloakService) { }
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
+    this.isAdmin = this.keycloak.isUserInRole("ADMIN");
   }
 
   public login() {
