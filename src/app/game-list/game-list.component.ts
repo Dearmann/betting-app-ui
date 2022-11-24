@@ -30,6 +30,9 @@ export class GameListComponent {
   }
 
   getGameLogoUrl(): string {
+    if (this.games.length === 0) {
+      return "";
+    }
     return this.games[0].logoUrl;
   }
 }

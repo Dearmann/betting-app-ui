@@ -1,26 +1,46 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>Esport Betting App</span>
-    <button routerLink="/" routerLinkActive="active" mat-raised-button color="primary"
-    class="header-button" aria-label="icon-button with medal icon">
+    <button routerLink="/games" routerLinkActive="active" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with home icon">
       <mat-icon>home</mat-icon>
       Home
     </button>
+    <button *ngIf="isAdmin" routerLink="/admin" routerLinkActive="active" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with admin panel icon">
+      <mat-icon>admin_panel_settings</mat-icon>
+      Admin Panel
+    </button>
     <span class="spacer"></span>
     <button routerLink="/matches" routerLinkActive="active" mat-raised-button color="primary"
-    class="header-button" aria-label="icon-button with medal icon">
+    class="header-button" aria-label="icon-button with menu icon">
       <mat-icon>menu</mat-icon>
       Matches
     </button>
     <button routerLink="/ranking" routerLinkActive="active" mat-raised-button color="primary"
-    class="header-button" aria-label="icon-button with heart icon">
+    class="header-button" aria-label="icon-button with medal icon">
       <mat-icon>military_tech</mat-icon>
       Ranking
     </button>
-    <button routerLink="/profile" routerLinkActive="active" mat-raised-button color="primary"
-    class="header-button" aria-label="icon-button with share icon">
+    <button *ngIf="isLoggedIn" routerLink="/profile" routerLinkActive="active" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with profile icon">
       <mat-icon>account_circle</mat-icon>
       Profile
+    </button>
+    <button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with logout icon">
+      <mat-icon>logout</mat-icon>
+      Sign Out
+    </button>
+    <button *ngIf="!isLoggedIn" (click)="login()" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with login icon">
+      <mat-icon>login</mat-icon>
+      Sign In
+    </button>
+    <button *ngIf="!isLoggedIn" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with register icon">
+      <mat-icon>how_to_reg</mat-icon>
+      Sign Up
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
