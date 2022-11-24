@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { keycloakInit } from './auth/keycloak-init.factory';
 import { ProfileComponent } from './profile/profile.component';
+import { ConfigService } from './config/config.service';
 
 @NgModule({
   declarations: [
@@ -32,11 +33,12 @@ import { ProfileComponent } from './profile/profile.component';
     KeycloakAngularModule
   ],
   providers: [
+    ConfigService,
     {
       provide: APP_INITIALIZER,
       useFactory: keycloakInit,
       multi: true,
-      deps: [KeycloakService],
+      deps: [KeycloakService, ConfigService],
     }
   ],
   bootstrap: [AppComponent]
