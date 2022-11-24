@@ -14,6 +14,7 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { keycloakInit } from './auth/keycloak-init.factory';
 import { ProfileComponent } from './profile/profile.component';
 import { ConfigService } from './config/config.service';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ConfigService } from './config/config.service';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    MatCardModule
   ],
   providers: [
     ConfigService,

@@ -1,0 +1,9 @@
+.game-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.game-logo {
+  width: 200px;
+}
