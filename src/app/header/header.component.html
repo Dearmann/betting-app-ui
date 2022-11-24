@@ -1,17 +1,11 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
+  <mat-toolbar-row class="toolbar-row">
     <span>Esport Betting App</span>
     <button routerLink="/games" routerLinkActive="active" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with home icon">
       <mat-icon>home</mat-icon>
       Home
     </button>
-    <button *ngIf="isAdmin" routerLink="/admin" routerLinkActive="active" mat-raised-button color="primary"
-    class="header-button" aria-label="icon-button with admin panel icon">
-      <mat-icon>admin_panel_settings</mat-icon>
-      Admin Panel
-    </button>
-    <span class="spacer"></span>
     <button routerLink="/matches" routerLinkActive="active" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with menu icon">
       <mat-icon>menu</mat-icon>
@@ -22,6 +16,12 @@
       <mat-icon>military_tech</mat-icon>
       Ranking
     </button>
+    <button *ngIf="isAdmin" routerLink="/admin" routerLinkActive="active" mat-raised-button color="primary"
+    class="header-button" aria-label="icon-button with admin panel icon">
+      <mat-icon>admin_panel_settings</mat-icon>
+      Admin Panel
+    </button>
+    <span class="spacer"></span>
     <button *ngIf="isLoggedIn" routerLink="/profile" routerLinkActive="active" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with profile icon">
       <mat-icon>account_circle</mat-icon>
@@ -30,17 +30,17 @@
     <button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with logout icon">
       <mat-icon>logout</mat-icon>
-      Sign Out
+      Logout
     </button>
     <button *ngIf="!isLoggedIn" (click)="login()" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with login icon">
       <mat-icon>login</mat-icon>
-      Sign In
+      Login
     </button>
     <button *ngIf="!isLoggedIn" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with register icon">
-      <mat-icon>how_to_reg</mat-icon>
-      Sign Up
+      <mat-icon>person_add</mat-icon>
+      Register
     </button>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -1,0 +1,15 @@
+.game-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 7%;
+}
+
+.game-card {
+  margin-top: 3%;
+}
+
+.game-logo {
+  width: 250px;
+  height: 150px;
+}

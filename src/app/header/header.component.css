@@ -5,3 +5,9 @@
 .header-button {
   margin-left: 20px
 }
+
+.toolbar-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: normal;
+}

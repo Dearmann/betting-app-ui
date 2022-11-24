@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GameService } from './game.service';
 import { GameResponse } from './GameResponse';
 
@@ -12,7 +13,7 @@ export class GameListComponent {
   public games: GameResponse[] = [];
   public error: any;
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
     this.getAllGames()
@@ -29,10 +30,14 @@ export class GameListComponent {
     );
   }
 
-  getGameLogoUrl(): string {
-    if (this.games.length === 0) {
-      return "";
+  getGameLogoUrl(gameResponse: GameResponse): string {
+    if (gameResponse.logoUrl) {
+      return gameResponse.logoUrl;
     }
-    return this.games[0].logoUrl;
+    return "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Video-Game-Controller-Icon-IDV-green.svg/2048px-Video-Game-Controller-Icon-IDV-green.svg.png";
+  }
+
+  gameClicked(gameId: number) {
+    this.router.navigateByUrl("/events/" + gameId);
   }
 }
