@@ -22,6 +22,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatchListComponent } from './match-list/match-list.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MatchListComponent } from './match-list/match-list.component';
     MatCardModule,
     MatExpansionModule,
     MatRippleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatListModule
   ],
   providers: [
     ConfigService,
