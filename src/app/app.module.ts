@@ -19,6 +19,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { MatchItemComponent } from './event-list/match-item/match-item.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { MatchesListComponent } from './matches-list/matches-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     ProfileComponent,
     EventListComponent,
     MatchItemComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    MatchesListComponent
   ],
   imports: [
     BrowserModule,
