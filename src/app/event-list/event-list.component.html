@@ -18,9 +18,7 @@
 
     <mat-progress-bar *ngIf="!event.matches" mode="indeterminate"></mat-progress-bar>
 
-    <div *ngIf="event.matches">
-      <app-match-item *ngFor="let match of event.matches; index as i"></app-match-item>
-    </div>
+    <app-match-list *ngIf="event.matches"></app-match-list>
 
   </mat-expansion-panel>
 </mat-accordion>
