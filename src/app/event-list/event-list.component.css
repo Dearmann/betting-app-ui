@@ -7,6 +7,7 @@
   display: block;
   margin: 50px auto;
   height: 120px;
+  border-radius: 1%;
 }
 
 .event-list .mat-expansion-panel-header-description {
