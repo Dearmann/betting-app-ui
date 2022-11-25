@@ -1,0 +1,18 @@
+<img *ngIf="game" [src]="game.logoUrl" [alt]="game.name" class="game-logo">
+<mat-accordion multi>
+  <mat-expansion-panel hideToggle *ngFor="let event of events; index as i;" class="event-list">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{event.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <span>Season - {{event.season}}</span>
+        <span>Region - {{event.region}}</span>
+        <span>{{event.start.toString().split('T')[0]}} - {{event.end.toString().split('T')[0]}}</span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-match-item></app-match-item>
+
+  </mat-expansion-panel>
+</mat-accordion>

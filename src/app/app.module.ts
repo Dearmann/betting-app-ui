@@ -14,14 +14,19 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { keycloakInit } from './auth/keycloak-init.factory';
 import { ProfileComponent } from './profile/profile.component';
 import { ConfigService } from './config/config.service';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { EventListComponent } from './event-list/event-list.component';
+import { MatchItemComponent } from './event-list/match-item/match-item.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     GameListComponent,
-    ProfileComponent
+    ProfileComponent,
+    EventListComponent,
+    MatchItemComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,8 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     KeycloakAngularModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [
     ConfigService,

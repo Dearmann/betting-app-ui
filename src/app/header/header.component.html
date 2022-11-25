@@ -1,32 +1,36 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="toolbar-row">
     <span>Esport Betting App</span>
-    <button routerLink="/games" routerLinkActive="active" mat-raised-button color="primary"
+    <button #games routerLink="/games" routerLinkActive="active" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with home icon">
       <mat-icon>home</mat-icon>
       Home
     </button>
-    <button routerLink="/matches" routerLinkActive="active" mat-raised-button color="primary"
+    <button #matches routerLink="/matches" routerLinkActive="active" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with menu icon">
       <mat-icon>menu</mat-icon>
       Matches
     </button>
-    <button routerLink="/ranking" routerLinkActive="active" mat-raised-button color="primary"
+    <button #ranking routerLink="/ranking" routerLinkActive="active" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with medal icon">
       <mat-icon>military_tech</mat-icon>
       Ranking
     </button>
-    <button *ngIf="isAdmin" routerLink="/admin" routerLinkActive="active" mat-raised-button color="primary"
-    class="header-button" aria-label="icon-button with admin panel icon">
-      <mat-icon>admin_panel_settings</mat-icon>
-      Admin Panel
-    </button>
+    <div [hidden]="!isAdmin">
+      <button #admin routerLink="/admin" routerLinkActive="active" mat-raised-button color="primary"
+      class="header-button" aria-label="icon-button with admin panel icon">
+        <mat-icon>admin_panel_settings</mat-icon>
+        Admin Panel
+      </button>
+    </div>
     <span class="spacer"></span>
-    <button *ngIf="isLoggedIn" routerLink="/profile" routerLinkActive="active" mat-raised-button color="primary"
-    class="header-button" aria-label="icon-button with profile icon">
-      <mat-icon>account_circle</mat-icon>
-      Profile
-    </button>
+    <div [hidden]="!isLoggedIn">
+      <button #profile routerLink="/profile" routerLinkActive="active" mat-raised-button color="primary"
+      class="header-button" aria-label="icon-button with profile icon">
+        <mat-icon>account_circle</mat-icon>
+        Profile
+      </button>
+    </div>
     <button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button color="primary"
     class="header-button" aria-label="icon-button with logout icon">
       <mat-icon>logout</mat-icon>

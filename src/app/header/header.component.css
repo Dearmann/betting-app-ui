@@ -11,3 +11,7 @@
   flex-flow: row wrap;
   justify-content: normal;
 }
+
+.button-focused {
+  filter: brightness(85%);
+}

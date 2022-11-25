@@ -1,0 +1,19 @@
+.event-list {
+  margin: auto;
+  width: 70%;
+}
+
+.game-logo {
+  display: block;
+  margin: 50px auto;
+  height: 120px;
+}
+
+.event-list .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+  flex-basis: 0;
+}

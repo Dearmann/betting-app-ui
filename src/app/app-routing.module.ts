@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { EventListComponent } from './event-list/event-list.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { ProfileComponent } from './profile/profile.component';
 
@@ -32,6 +33,11 @@ const routes: Routes = [
     component: ProfileComponent,
     title: 'Betting - Profile',
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'events/:gameId',
+    component: EventListComponent,
+    title: 'Betting - Events'
   },
   {
     path: '**',

@@ -15,4 +15,9 @@ export class GameService {
   getAllGames(): Observable<GameResponse[]> {
     return this.httpClient.get<GameResponse[]>(this.backendUrl);
   }
+
+  getGameById(gameId: number): Observable<GameResponse> {
+    return this.httpClient.get<GameResponse>(this.backendUrl + "/" + gameId);
+  }
+
 }
