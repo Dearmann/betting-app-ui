@@ -3,7 +3,8 @@
   <mat-expansion-panel
   hideToggle
   *ngFor="let event of events; index as i;"
-  class="event-list">
+  class="event-list"
+  (click)="eventClicked(event.id, i)">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{event.name}}
@@ -17,7 +18,9 @@
 
     <mat-progress-bar *ngIf="!event.matches" mode="indeterminate"></mat-progress-bar>
 
-    <app-match-item *ngIf="event.matches"></app-match-item>
+    <div *ngIf="event.matches">
+      <app-match-item *ngFor="let match of event.matches; index as i"></app-match-item>
+    </div>
 
   </mat-expansion-panel>
 </mat-accordion>

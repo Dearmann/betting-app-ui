@@ -1,4 +1,4 @@
-import { MatchItem } from "./match-item";
+import { Match } from "./match";
 
 export interface Event {
   id: number;
@@ -9,5 +9,5 @@ export interface Event {
   end: Date;
   gameId: number;
   teamIds: number[];
-  matches?: MatchItem | null;
+  matches?: Match[] | null;
 }
