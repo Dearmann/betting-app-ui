@@ -6,6 +6,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { MatchesListComponent } from './matches-list/matches-list.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'ranking',
-    component: GameListComponent,
+    component: RankingComponent,
     title: 'Betting - Ranking'
   },
   {

@@ -20,6 +20,7 @@ import { MatchItemComponent } from './event-list/match-item/match-item.component
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { MatchesListComponent } from './matches-list/matches-list.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatchesListComponent } from './matches-list/matches-list.component';
     EventListComponent,
     MatchItemComponent,
     AdminPanelComponent,
-    MatchesListComponent
+    MatchesListComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
