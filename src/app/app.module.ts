@@ -21,6 +21,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { MatchesListComponent } from './matches-list/matches-list.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { RankingComponent } from './ranking/ranking.component';
     MatButtonModule,
     KeycloakAngularModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatRippleModule
   ],
   providers: [
     ConfigService,
