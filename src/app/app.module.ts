@@ -22,6 +22,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { MatchesListComponent } from './matches-list/matches-list.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { MatRippleModule } from '@angular/material/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MatRippleModule } from '@angular/material/core';
     KeycloakAngularModule,
     MatCardModule,
     MatExpansionModule,
-    MatRippleModule
+    MatRippleModule,
+    MatProgressBarModule
   ],
   providers: [
     ConfigService,

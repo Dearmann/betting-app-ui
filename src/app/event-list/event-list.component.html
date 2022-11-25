@@ -1,6 +1,9 @@
 <img *ngIf="game" [src]="game.logoUrl" [alt]="game.name" class="game-logo">
 <mat-accordion multi>
-  <mat-expansion-panel hideToggle *ngFor="let event of events; index as i;" class="event-list">
+  <mat-expansion-panel
+  hideToggle
+  *ngFor="let event of events; index as i;"
+  class="event-list">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{event.name}}
@@ -12,7 +15,9 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <app-match-item></app-match-item>
+    <mat-progress-bar *ngIf="!event.matches" mode="indeterminate"></mat-progress-bar>
+
+    <app-match-item *ngIf="event.matches"></app-match-item>
 
   </mat-expansion-panel>
 </mat-accordion>
