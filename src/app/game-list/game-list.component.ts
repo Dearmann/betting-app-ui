@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from './game.service';
-import { GameResponse } from './GameResponse';
+import { Game } from '../model/game';
 
 @Component({
   selector: 'app-game-list',
@@ -10,7 +10,7 @@ import { GameResponse } from './GameResponse';
 })
 export class GameListComponent {
 
-  public games: GameResponse[] = [];
+  public games: Game[] = [];
   public error: any;
 
   constructor(private gameService: GameService, private router: Router) { }
@@ -30,7 +30,7 @@ export class GameListComponent {
     );
   }
 
-  getGameLogoUrl(gameResponse: GameResponse): string {
+  getGameLogoUrl(gameResponse: Game): string {
     if (gameResponse.logoUrl) {
       return gameResponse.logoUrl;
     }

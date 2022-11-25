@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GameService } from '../game-list/game.service';
-import { GameResponse } from '../game-list/GameResponse';
+import { Game } from '../model/game';
 import { EventService } from './event.service';
-import { EventResponse } from './EventResponse';
+import { Event } from '../model/event';
 
 @Component({
   selector: 'app-event-list',
@@ -12,8 +12,8 @@ import { EventResponse } from './EventResponse';
 })
 export class EventListComponent implements OnInit {
 
-  public events: EventResponse[] = [];
-  public game!: GameResponse;
+  public events: Event[] = [];
+  public game!: Game;
   public gameId: number;
   public error: any;
 

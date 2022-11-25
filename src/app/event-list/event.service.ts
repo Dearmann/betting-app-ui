@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EventResponse } from './EventResponse';
+import { Event } from '../model/event';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class EventService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  getEventsByGameId(gameId: number): Observable<EventResponse[]> {
-    return this.httpClient.get<EventResponse[]>(this.backendUrl + "/by-game/" + gameId);
+  getEventsByGameId(gameId: number): Observable<Event[]> {
+    return this.httpClient.get<Event[]>(this.backendUrl + "/by-game/" + gameId);
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GameResponse } from './GameResponse';
+import { Game } from '../model/game';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,12 @@ export class GameService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllGames(): Observable<GameResponse[]> {
-    return this.httpClient.get<GameResponse[]>(this.backendUrl);
+  getAllGames(): Observable<Game[]> {
+    return this.httpClient.get<Game[]>(this.backendUrl);
   }
 
-  getGameById(gameId: number): Observable<GameResponse> {
-    return this.httpClient.get<GameResponse>(this.backendUrl + "/" + gameId);
+  getGameById(gameId: number): Observable<Game> {
+    return this.httpClient.get<Game>(this.backendUrl + "/" + gameId);
   }
 
 }

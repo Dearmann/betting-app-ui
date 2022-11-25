@@ -1,4 +1,4 @@
-export interface ErrorResponse {
+export interface Error {
   httpStatus: number;
   message: string;
   timeStamp: string;
