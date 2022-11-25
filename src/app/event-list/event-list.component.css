@@ -5,8 +5,8 @@
 
 .game-logo {
   display: block;
-  margin: 30px auto;
-  width: 250px;
+  margin: 50px auto;
+  height: 120px;
 }
 
 .event-list .mat-expansion-panel-header-description {
