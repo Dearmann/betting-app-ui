@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { EventListComponent } from './event-list/event-list.component';
 import { MatchItemComponent } from './event-list/match-item/match-item.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     GameListComponent,
     ProfileComponent,
     EventListComponent,
-    MatchItemComponent
+    MatchItemComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

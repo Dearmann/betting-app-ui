@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EventListComponent } from './event-list/event-list.component';
 import { GameListComponent } from './game-list/game-list.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: GameListComponent,
+    component: AdminPanelComponent,
     title: 'Betting - Admin Panel',
     canActivate: [AuthGuard],
     data: { roles: ['ADMIN'] }
