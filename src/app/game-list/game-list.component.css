@@ -5,11 +5,32 @@
 }
 
 .game-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 6%;
+  width: 350px;
+  height: 150px;
+  padding: 20px;
+}
+
+.gradient-transition {
+  background: linear-gradient(white, lightgray);
+  background: -o-linear-gradient(white, lightgray);
+  background: -moz-linear-gradient(white, lightgray);
+  background: -webkit-linear-gradient(white, lightgray);
+  transition: background 300ms ease-out;
+  -o-transition: background 300ms ease-out;
+  -moz-transition: background 300ms ease-out;
+  -webkit-transition: background 300ms ease-out;
+  background-size: 1px 700px;
+}
+
+.gradient-transition:hover {
+background-position: 100px;
 }
 
 .game-logo {
-  width: 430px;
-  height: 200px;
+  width: 350px;
   border-radius: 1%;
 }
