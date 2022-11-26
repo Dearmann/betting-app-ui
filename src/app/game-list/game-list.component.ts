@@ -33,7 +33,9 @@ export class GameListComponent {
     return "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Video-Game-Controller-Icon-IDV-green.svg/2048px-Video-Game-Controller-Icon-IDV-green.svg.png";
   }
 
-  gameClicked(gameId: number) {
-    this.router.navigateByUrl("/events/" + gameId);
+  gameClicked(gameId: number, index: number) {
+    if (this.games[index].eventIds.length !== 0) {
+      this.router.navigateByUrl("/events/" + gameId);
+    }
   }
 }

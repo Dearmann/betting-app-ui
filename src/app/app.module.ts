@@ -24,6 +24,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatchListComponent } from './match-list/match-list.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatRippleModule,
     MatProgressBarModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTooltipModule
   ],
   providers: [
     ConfigService,
