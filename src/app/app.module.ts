@@ -23,6 +23,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatchListComponent } from './match-list/match-list.component';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { MatListModule } from '@angular/material/list';
     MatExpansionModule,
     MatRippleModule,
     MatProgressBarModule,
-    MatListModule
+    MatListModule,
+    MatSidenavModule
   ],
   providers: [
     ConfigService,
