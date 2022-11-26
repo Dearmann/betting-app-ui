@@ -15,4 +15,8 @@ export class MatchService {
   getMatchesByEventId(eventId: number): Observable<Match[]> {
     return this.httpClient.get<Match[]>(this.backendUrl + "/by-event/" + eventId);
   }
+
+  getAllMatches(): Observable<Match[]> {
+    return this.httpClient.get<Match[]>(this.backendUrl);
+  }
 }
