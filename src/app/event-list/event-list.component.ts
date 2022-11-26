@@ -33,36 +33,24 @@ export class EventListComponent implements OnInit {
   }
 
   getEventsByGameId(gameId: number) {
-    this.eventService.getEventsByGameId(gameId).subscribe(
-      response => {
-        this.events = response;
-      },
-      error => {
-        this.error = error;
-      }
-    );
+    this.eventService.getEventsByGameId(gameId).subscribe({
+      next: response => { this.events = response },
+      error: error => { this.error = error }
+    });
   }
 
   getGameById(gameId: number) {
-    this.gameService.getGameById(gameId).subscribe(
-      response => {
-        this.game = response;
-      },
-      error => {
-        this.error = error;
-      }
-    );
+    this.gameService.getGameById(gameId).subscribe({
+      next: response => { this.game = response },
+      error: error => { this.error = error }
+    });
   }
 
   getMatchesByEventId(eventId: number, eventToAssignMatches: Event) {
-    this.matchService.getMatchesByEventId(eventId).subscribe(
-      response => {
-        eventToAssignMatches.matches = response;
-      },
-      error => {
-        this.error = error;
-      }
-    )
+    this.matchService.getMatchesByEventId(eventId).subscribe({
+      next: response => { eventToAssignMatches.matches = response },
+      error: error => { this.error = error }
+    })
   }
 
   eventClicked(eventId: number, index: number) {

@@ -20,14 +20,10 @@ export class GameListComponent {
   }
 
   getAllGames() {
-    this.gameService.getAllGames().subscribe(
-      response => {
-        this.games = response;
-      },
-      error => {
-        this.error = error;
-      }
-    );
+    this.gameService.getAllGames().subscribe({
+      next: response => { this.games = response },
+      error: error => { this.error = error }
+    });
   }
 
   getGameLogoUrl(gameResponse: Game): string {
