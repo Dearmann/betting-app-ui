@@ -5,13 +5,10 @@
 }
 
 .game-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-top: 6%;
   width: 350px;
   height: 150px;
-  padding: 20px 20px 5px 20px;
+  padding: 20px;
 }
 
 .gradient-transition {
@@ -33,4 +30,8 @@ background-position: 100px;
 .game-logo {
   width: 350px;
   border-radius: 1%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
