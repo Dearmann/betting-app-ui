@@ -2,16 +2,23 @@
   <mat-divider></mat-divider>
   <mat-list-item
   *ngFor="let match of matches; index as i"
-  matRipple>
-    <span class="spacer"></span>
-    <img [src]="match.team1.logoUrl" alt="" class="team-logo">
-    {{ match.team1.name }}
-    <span class="spacer"></span>
-    vs
-    <span class="spacer"></span>
-    {{ match.team2.name }}
-    <img [src]="match.team2.logoUrl" alt="" class="team-logo">
-    <span class="spacer"></span>
+  matRipple
+  class="gradient-transition">
+  <div class="match">
+
+    <span class="team">
+      <img [src]="match.team1.logoUrl" alt="" class="team-logo">
+      {{ match.team1.name }}
+    </span>
+
+    <span style="width: 100px; text-align: center;">vs</span>
+
+    <span class="team">
+      {{ match.team2.name }}
+      <img [src]="match.team2.logoUrl" alt="" class="team-logo">
+    </span>
+
+  </div>
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
