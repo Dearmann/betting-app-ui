@@ -15,4 +15,8 @@ export class EventService {
   getEventsByGameId(gameId: number): Observable<Event[]> {
     return this.httpClient.get<Event[]>(this.backendUrl + "/by-game/" + gameId);
   }
+
+  getAllEvents(): Observable<Event[]> {
+    return this.httpClient.get<Event[]>(this.backendUrl);
+  }
 }

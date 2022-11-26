@@ -28,8 +28,13 @@ export class EventListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getEventsByGameId(this.gameId);
-    this.getGameById(this.gameId);
+    if (this.gameId) {
+      this.getEventsByGameId(this.gameId);
+      this.getGameById(this.gameId);
+    }
+    else {
+      this.getAllEvents();
+    }
   }
 
   getEventsByGameId(gameId: number) {
@@ -49,6 +54,13 @@ export class EventListComponent implements OnInit {
   getMatchesByEventId(eventId: number, eventToAssignMatches: Event) {
     this.matchService.getMatchesByEventId(eventId).subscribe({
       next: response => { eventToAssignMatches.matches = response },
+      error: error => { this.error = error }
+    })
+  }
+
+  getAllEvents() {
+    this.eventService.getAllEvents().subscribe({
+      next: response => { this.events = response },
       error: error => { this.error = error }
     })
   }
