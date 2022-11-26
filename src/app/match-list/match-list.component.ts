@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Match } from '../model/match';
+import { MatchService } from '../services/match.service';
 
 @Component({
   selector: 'app-match-list',
@@ -9,11 +10,22 @@ import { Match } from '../model/match';
 export class MatchListComponent implements OnInit {
 
   @Input()
-  public matches: Match[] = [];
+  public matches!: Match[];
+  public error: any;
 
-  constructor() { }
+  constructor(private readonly matchService: MatchService) { }
 
   ngOnInit(): void {
+    if (!this.matches) {
+      this.getAllMatches();
+    }
+  }
+
+  getAllMatches() {
+    this.matchService.getAllMatches().subscribe({
+      next: (response) => { this.matches = response },
+      error: (error) => { this.error = error }
+    })
   }
 
 }
