@@ -4,7 +4,7 @@
   (click)="gameClicked(game.id, i)"
   class="game-card gradient-transition"
   matRipple
-  matTooltip="Coming soon!"
+  matTooltip="Currently no events to show!"
   [matTooltipDisabled]="!(game.eventIds.length === 0)">
     <mat-card-title *ngIf="!game.logoUrl">
       {{game.name}}
