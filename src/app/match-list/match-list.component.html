@@ -1,0 +1,17 @@
+<mat-list class="match-list">
+  <mat-divider></mat-divider>
+  <mat-list-item
+  *ngFor="let match of matches; index as i"
+  matRipple>
+    <span class="spacer"></span>
+    <img [src]="match.team1.logoUrl" alt="" class="team-logo">
+    {{ match.team1.name }}
+    <span class="spacer"></span>
+    vs
+    <span class="spacer"></span>
+    {{ match.team2.name }}
+    <img [src]="match.team2.logoUrl" alt="" class="team-logo">
+    <span class="spacer"></span>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

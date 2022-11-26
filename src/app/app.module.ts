@@ -16,12 +16,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { ConfigService } from './config/config.service';
 import { MatCardModule } from '@angular/material/card';
 import { EventListComponent } from './event-list/event-list.component';
-import { MatchItemComponent } from './event-list/match-item/match-item.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { MatchesListComponent } from './matches-list/matches-list.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { MatRippleModule } from '@angular/material/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatchListComponent } from './match-list/match-list.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,9 @@ import { MatRippleModule } from '@angular/material/core';
     GameListComponent,
     ProfileComponent,
     EventListComponent,
-    MatchItemComponent,
     AdminPanelComponent,
-    MatchesListComponent,
-    RankingComponent
+    RankingComponent,
+    MatchListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +46,9 @@ import { MatRippleModule } from '@angular/material/core';
     KeycloakAngularModule,
     MatCardModule,
     MatExpansionModule,
-    MatRippleModule
+    MatRippleModule,
+    MatProgressBarModule,
+    MatListModule
   ],
   providers: [
     ConfigService,

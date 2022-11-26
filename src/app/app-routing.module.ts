@@ -4,7 +4,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EventListComponent } from './event-list/event-list.component';
 import { GameListComponent } from './game-list/game-list.component';
-import { MatchesListComponent } from './matches-list/matches-list.component';
+import { MatchListComponent } from './match-list/match-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RankingComponent } from './ranking/ranking.component';
 
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'matches',
-    component: MatchesListComponent,
+    component: MatchListComponent,
     title: 'Betting - Matches'
   },
   {
