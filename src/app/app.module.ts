@@ -25,6 +25,7 @@ import { MatchListComponent } from './match-list/match-list.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TeamListComponent } from './team-list/team-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     EventListComponent,
     AdminPanelComponent,
     RankingComponent,
-    MatchListComponent
+    MatchListComponent,
+    TeamListComponent
   ],
   imports: [
     BrowserModule,
