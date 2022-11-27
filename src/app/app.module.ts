@@ -35,6 +35,8 @@ import { GameFormComponent } from './admin-panel/game-form/game-form.component';
 import { EventFormComponent } from './admin-panel/event-form/event-form.component';
 import { TeamFormComponent } from './admin-panel/team-form/team-form.component';
 import { MatchFormComponent } from './admin-panel/match-form/match-form.component';
+import { DialogConfirmDeleteComponent } from './admin-panel/dialog-confirm-delete/dialog-confirm-delete.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { MatchFormComponent } from './admin-panel/match-form/match-form.componen
     GameFormComponent,
     EventFormComponent,
     TeamFormComponent,
-    MatchFormComponent
+    MatchFormComponent,
+    DialogConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { MatchFormComponent } from './admin-panel/match-form/match-form.componen
     MatListModule,
     MatSidenavModule,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [
     ConfigService,
