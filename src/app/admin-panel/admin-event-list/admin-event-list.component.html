@@ -1,0 +1,47 @@
+<mat-progress-bar *ngIf="!events" mode="indeterminate"></mat-progress-bar>
+
+<mat-list *ngIf="events" class="content-list">
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let event of events">
+    <div mat-line class="entity">{{event.name}}</div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Region: </span>
+      <span>{{event.region}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Season: </span>
+      <span>{{event.season}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Start date: </span>
+      <span>{{event.start}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">End date: </span>
+      <span>{{event.end}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Game IDs: </span>
+      <span>{{event.gameId}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Team IDs: </span>
+      <span>{{event.teamIds}}</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or Delete admin menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

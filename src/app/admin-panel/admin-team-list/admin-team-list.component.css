@@ -1,0 +1,16 @@
+.entity {
+  font-weight: 600 !important;
+}
+
+.entity-field-name {
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.entity-field-container {
+  color: gray;
+}
+
+.content-list {
+  padding: 0;
+}

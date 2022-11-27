@@ -28,10 +28,10 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-game-list *ngIf="selectedAction === 'Game'"></app-game-list>
-    <app-event-list *ngIf="selectedAction === 'Event'"></app-event-list>
-    <app-team-list *ngIf="selectedAction === 'Team'"></app-team-list>
-    <app-match-list *ngIf="selectedAction === 'Match'"></app-match-list>
+    <app-admin-game-list *ngIf="selectedAction === 'Game'"></app-admin-game-list>
+    <app-admin-event-list *ngIf="selectedAction === 'Event'"></app-admin-event-list>
+    <app-admin-team-list *ngIf="selectedAction === 'Team'"></app-admin-team-list>
+    <app-admin-match-list *ngIf="selectedAction === 'Match'"></app-admin-match-list>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

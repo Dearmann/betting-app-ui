@@ -1,0 +1,35 @@
+<mat-progress-bar *ngIf="!teams" mode="indeterminate"></mat-progress-bar>
+
+<mat-list *ngIf="teams" class="content-list">
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let team of teams">
+    <div mat-line class="entity">{{team.name}}</div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Logo URL: </span>
+      <span>{{team.logoUrl}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Game ID: </span>
+      <span>{{team.gameId}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Match IDs played: </span>
+      <span>{{team.matchesAsTeam1}},{{team.matchesAsTeam2}}</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or Delete admin menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

@@ -26,6 +26,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TeamListComponent } from './team-list/team-list.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { AdminGameListComponent } from './admin-panel/admin-game-list/admin-game-list.component';
+import { AdminEventListComponent } from './admin-panel/admin-event-list/admin-event-list.component';
+import { AdminTeamListComponent } from './admin-panel/admin-team-list/admin-team-list.component';
+import { AdminMatchListComponent } from './admin-panel/admin-match-list/admin-match-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,11 @@ import { TeamListComponent } from './team-list/team-list.component';
     AdminPanelComponent,
     RankingComponent,
     MatchListComponent,
-    TeamListComponent
+    TeamListComponent,
+    AdminGameListComponent,
+    AdminEventListComponent,
+    AdminTeamListComponent,
+    AdminMatchListComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,8 @@ import { TeamListComponent } from './team-list/team-list.component';
     MatProgressBarModule,
     MatListModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
   ],
   providers: [
     ConfigService,
