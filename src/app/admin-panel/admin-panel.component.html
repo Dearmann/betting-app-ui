@@ -1,7 +1,7 @@
 <mat-sidenav-container class="admin-panel">
 
   <mat-sidenav mode="side" opened>
-    <mat-selection-list #selectionList [multiple]="false" (click)="selectAction(selectionList)" class="selection-list">
+    <mat-selection-list #selectionList [multiple]="false" class="selection-list">
       <div *ngFor="let action of actions">
 
         <div
@@ -11,15 +11,15 @@
 
           <mat-list-option
           [value]="action"
-          style="background-color: white-space;"
-          [disableRipple]="true">
+          [disableRipple]="true"
+          (click)="selectAction(selectionList)">
             {{action}}
           </mat-list-option>
 
           <button
           mat-icon-button
           class="create-button"
-          (click)="createButtonClicked(action.toLowerCase())">
+          (click)="createButtonClicked(action)">
             <mat-icon>add_circle</mat-icon>
           </button>
 
@@ -35,6 +35,10 @@
     <app-admin-event-list *ngIf="selectedAction === 'Event'"></app-admin-event-list>
     <app-admin-team-list *ngIf="selectedAction === 'Team'"></app-admin-team-list>
     <app-admin-match-list *ngIf="selectedAction === 'Match'"></app-admin-match-list>
+    <app-game-form *ngIf="selectedAction === 'GameForm'"></app-game-form>
+    <app-event-form *ngIf="selectedAction === 'EventForm'"></app-event-form>
+    <app-team-form *ngIf="selectedAction === 'TeamForm'"></app-team-form>
+    <app-match-form *ngIf="selectedAction === 'MatchForm'"></app-match-form>
   </mat-sidenav-content>
 
 </mat-sidenav-container>
