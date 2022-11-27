@@ -3,7 +3,7 @@
 <mat-list *ngIf="teams" class="content-list">
   <mat-divider></mat-divider>
   <mat-list-item *ngFor="let team of teams">
-    <div mat-line class="entity">{{team.name}}</div>
+    <div mat-line class="entity">[{{team.id}}] {{team.name}}</div>
     <div mat-line class="entity-field-container">
       <span class="entity-field-name">Logo URL: </span>
       <span>{{team.logoUrl}}</span>
@@ -14,7 +14,7 @@
     </div>
     <div mat-line class="entity-field-container">
       <span class="entity-field-name">Match IDs played: </span>
-      <span>{{team.matchesAsTeam1}},{{team.matchesAsTeam2}}</span>
+      <span>{{team.matchesAsTeam1}}<span *ngIf="team.matchesAsTeam1.length && team.matchesAsTeam2.length">,</span>{{team.matchesAsTeam2}}</span>
     </div>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or Delete admin menu">
       <mat-icon>more_vert</mat-icon>

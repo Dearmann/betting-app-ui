@@ -3,7 +3,7 @@
 <mat-list *ngIf="events" class="content-list">
   <mat-divider></mat-divider>
   <mat-list-item *ngFor="let event of events">
-    <div mat-line class="entity">{{event.name}}</div>
+    <div mat-line class="entity">[{{event.id}}] {{event.name}}</div>
     <div mat-line class="entity-field-container">
       <span class="entity-field-name">Region: </span>
       <span>{{event.region}}</span>
