@@ -19,4 +19,9 @@ export class EventService {
   getAllEvents(): Observable<Event[]> {
     return this.httpClient.get<Event[]>(this.backendUrl);
   }
+
+  deleteEvent(eventId: number): Observable<void> {
+    return this.httpClient.delete<void>(this.backendUrl + "/" + eventId);
+  }
+
 }

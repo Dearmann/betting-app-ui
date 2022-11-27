@@ -19,5 +19,9 @@ export class TeamService {
   getTeamById(teamId: number): Observable<Team> {
     return this.httpClient.get<Team>(this.backendUrl + "/" + teamId);
   }
+
+  deleteTeam(teamId: number): Observable<void> {
+    return this.httpClient.delete<void>(this.backendUrl + "/" + teamId);
+  }
   
 }

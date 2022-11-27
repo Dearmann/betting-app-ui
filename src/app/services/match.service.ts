@@ -19,4 +19,9 @@ export class MatchService {
   getAllMatches(): Observable<Match[]> {
     return this.httpClient.get<Match[]>(this.backendUrl);
   }
+
+  deleteMatch(matchId: number): Observable<void> {
+    return this.httpClient.delete<void>(this.backendUrl + "/" + matchId);
+  }
+  
 }

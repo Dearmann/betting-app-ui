@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Game } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
+import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-confirm-delete.component';
 
 @Component({
   selector: 'app-admin-game-list',
@@ -13,7 +15,7 @@ export class AdminGameListComponent implements OnInit {
   public games!: Game[];
   @Output() gameIdEmitter = new EventEmitter<number>();
 
-  constructor(private readonly gameService: GameService) { }
+  constructor(private readonly gameService: GameService, public readonly dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllGames();
@@ -31,7 +33,21 @@ export class AdminGameListComponent implements OnInit {
   }
 
   deleteButtonClicked(gameId: number) {
+    let deleteDialog = this.dialog.open(DialogConfirmDeleteComponent, {
+      data: { name: 'game' }
+    });
+    deleteDialog.afterClosed().subscribe(confirmation => {
+      if (confirmation) {
+        this.deleteGame(gameId);
+      }
+    });
+  }
 
+  deleteGame(gameId: number) {
+    this.gameService.deleteGame(gameId).subscribe({
+      error: error => this.error = error,
+      complete: () => this.getAllGames()
+    })
   }
 
 }

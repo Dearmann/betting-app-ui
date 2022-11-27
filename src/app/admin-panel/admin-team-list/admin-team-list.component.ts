@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Team } from 'src/app/model/team';
 import { TeamService } from 'src/app/services/team.service';
+import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-confirm-delete.component';
 
 @Component({
   selector: 'app-admin-team-list',
@@ -13,7 +15,7 @@ export class AdminTeamListComponent implements OnInit {
   public teams!: Team[];
   @Output() teamIdEmitter = new EventEmitter<number>();
 
-  constructor(private readonly teamService: TeamService) { }
+  constructor(private readonly teamService: TeamService, public readonly dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllTeams();
@@ -31,7 +33,21 @@ export class AdminTeamListComponent implements OnInit {
   }
 
   deleteButtonClicked(teamId: number) {
+    let deleteDialog = this.dialog.open(DialogConfirmDeleteComponent, {
+      data: { name: 'team' }
+    });
+    deleteDialog.afterClosed().subscribe(confirmation => {
+      if (confirmation) {
+        this.deleteTeam(teamId);
+      }
+    });
+  }
 
+  deleteTeam(teamId: number) {
+    this.teamService.deleteTeam(teamId).subscribe({
+      error: error => this.error = error,
+      complete: () => this.getAllTeams()
+    })
   }
 
 }

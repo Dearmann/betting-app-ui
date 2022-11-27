@@ -20,4 +20,8 @@ export class GameService {
     return this.httpClient.get<Game>(this.backendUrl + "/" + gameId);
   }
 
+  deleteGame(gameId: number): Observable<void> {
+    return this.httpClient.delete<void>(this.backendUrl + "/" + gameId);
+  }
+
 }
