@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Team } from 'src/app/model/team';
 import { TeamService } from 'src/app/services/team.service';
 
@@ -11,6 +11,7 @@ export class AdminTeamListComponent implements OnInit {
 
   public error: any;
   public teams!: Team[];
+  @Output() teamIdEmitter = new EventEmitter<number>();
 
   constructor(private readonly teamService: TeamService) { }
 
@@ -23,6 +24,14 @@ export class AdminTeamListComponent implements OnInit {
       next: response => { this.teams = response },
       error: error => { this.error = error }
     });
+  }
+
+  editButtonClicked(teamId: number) {
+    this.teamIdEmitter.emit(teamId);
+  }
+
+  deleteButtonClicked(teamId: number) {
+
   }
 
 }

@@ -19,17 +19,16 @@
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or Delete admin menu">
       <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editButtonClicked(team.id)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="deleteButtonClicked(team.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
-
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>edit</mat-icon>
-    <span>Edit</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>delete</mat-icon>
-    <span>Delete</span>
-  </button>
-</mat-menu>

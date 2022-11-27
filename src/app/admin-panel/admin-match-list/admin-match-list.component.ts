@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Match } from 'src/app/model/match';
 import { MatchService } from 'src/app/services/match.service';
 
@@ -11,6 +11,7 @@ export class AdminMatchListComponent implements OnInit {
 
   public error: any;
   public matches!: Match[];
+  @Output() matchIdEmitter = new EventEmitter<number>();
 
   constructor(private readonly matchService: MatchService) { }
 
@@ -23,6 +24,14 @@ export class AdminMatchListComponent implements OnInit {
       next: response => { this.matches = response },
       error: error => { this.error = error }
     });
+  }
+
+  editButtonClicked(matchId: number) {
+    this.matchIdEmitter.emit(matchId);
+  }
+
+  deleteButtonClicked(matchId: number) {
+
   }
 
 }

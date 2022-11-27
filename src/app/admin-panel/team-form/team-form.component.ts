@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-team-form',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-form.component.css']
 })
 export class TeamFormComponent implements OnInit {
+
+  @Input() public teamId: number = 0;
 
   constructor() { }
 

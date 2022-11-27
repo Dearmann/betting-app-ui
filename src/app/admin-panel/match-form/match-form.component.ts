@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-match-form',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./match-form.component.css']
 })
 export class MatchFormComponent implements OnInit {
+
+  @Input() public matchId: number = 0;
 
   constructor() { }
 

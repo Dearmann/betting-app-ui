@@ -10,6 +10,7 @@ export class AdminPanelComponent implements OnInit {
 
   public actions: string[] = ['Game', 'Event', 'Team', 'Match'];
   public selectedAction: string = "";
+  public editingEntityId: number = 0;
 
   constructor() { }
 
@@ -23,7 +24,13 @@ export class AdminPanelComponent implements OnInit {
   }
 
   createButtonClicked(action: string) {
+    this.editingEntityId = 0;
     this.selectedAction = action + 'Form';
+  }
+
+  editButtonClicked(entityId: number) {
+    this.editingEntityId = entityId;
+    this.selectedAction = this.selectedAction + 'Form';
   }
 
 }

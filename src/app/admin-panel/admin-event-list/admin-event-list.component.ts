@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Event } from 'src/app/model/event';
 import { EventService } from 'src/app/services/event.service';
 
@@ -11,6 +11,7 @@ export class AdminEventListComponent implements OnInit {
 
   public error: any;
   public events!: Event[];
+  @Output() eventIdEmitter = new EventEmitter<number>();
 
   constructor(private readonly eventService: EventService) { }
 
@@ -23,6 +24,14 @@ export class AdminEventListComponent implements OnInit {
       next: response => { this.events = response },
       error: error => { this.error = error }
     });
+  }
+
+  editButtonClicked(eventId: number) {
+    this.eventIdEmitter.emit(eventId);
+  }
+
+  deleteButtonClicked(eventId: number) {
+
   }
 
 }
