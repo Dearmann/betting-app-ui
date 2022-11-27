@@ -12,7 +12,7 @@
       <mat-panel-description>
         <span style="width: 87px;">Season - {{event.season}}</span>
         <span style="width: 120px;">Region - {{event.region}}</span>
-        <span>{{event.start.toString().split('T')[0]}} - {{event.end.toString().split('T')[0]}}</span>
+        <span>{{event.start | date}} - {{event.end | date}}</span>
       </mat-panel-description>
     </mat-expansion-panel-header>
 
