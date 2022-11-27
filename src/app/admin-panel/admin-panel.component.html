@@ -1,12 +1,29 @@
 <mat-sidenav-container class="admin-panel">
 
   <mat-sidenav mode="side" opened>
-    <mat-selection-list #selectionList [multiple]="false" (click)="selectAction(selectionList)">
-      <mat-divider></mat-divider>
-      <mat-list-option *ngFor="let action of actions" [value]="action">
-        {{action}}
+    <mat-selection-list #selectionList [multiple]="false" (click)="selectAction(selectionList)" class="selection-list">
+      <div *ngFor="let action of actions">
+
+        <div
+        class="actions"
+        matRipple
+        [ngStyle]="{'background-color': (selectedAction === action) ? 'lightgray' : '#ffffff'}">
+
+          <mat-list-option
+          [value]="action"
+          style="background-color: white-space;"
+          [disableRipple]="true">
+            {{action}}
+          </mat-list-option>
+
+          <button mat-icon-button class="create-button">
+            <mat-icon>add_circle</mat-icon>
+          </button>
+
+        </div>
+
         <mat-divider></mat-divider>
-      </mat-list-option>
+      </div>
     </mat-selection-list>
   </mat-sidenav>
 
