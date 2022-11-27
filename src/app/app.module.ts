@@ -31,6 +31,10 @@ import { AdminGameListComponent } from './admin-panel/admin-game-list/admin-game
 import { AdminEventListComponent } from './admin-panel/admin-event-list/admin-event-list.component';
 import { AdminTeamListComponent } from './admin-panel/admin-team-list/admin-team-list.component';
 import { AdminMatchListComponent } from './admin-panel/admin-match-list/admin-match-list.component';
+import { GameFormComponent } from './admin-panel/game-form/game-form.component';
+import { EventFormComponent } from './admin-panel/event-form/event-form.component';
+import { TeamFormComponent } from './admin-panel/team-form/team-form.component';
+import { MatchFormComponent } from './admin-panel/match-form/match-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { AdminMatchListComponent } from './admin-panel/admin-match-list/admin-ma
     AdminGameListComponent,
     AdminEventListComponent,
     AdminTeamListComponent,
-    AdminMatchListComponent
+    AdminMatchListComponent,
+    GameFormComponent,
+    EventFormComponent,
+    TeamFormComponent,
+    MatchFormComponent
   ],
   imports: [
     BrowserModule,

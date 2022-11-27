@@ -16,7 +16,10 @@
             {{action}}
           </mat-list-option>
 
-          <button mat-icon-button class="create-button">
+          <button
+          mat-icon-button
+          class="create-button"
+          (click)="createButtonClicked(action.toLowerCase())">
             <mat-icon>add_circle</mat-icon>
           </button>
 

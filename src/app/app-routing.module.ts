@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { EventFormComponent } from './admin-panel/event-form/event-form.component';
+import { GameFormComponent } from './admin-panel/game-form/game-form.component';
+import { MatchFormComponent } from './admin-panel/match-form/match-form.component';
+import { TeamFormComponent } from './admin-panel/team-form/team-form.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EventListComponent } from './event-list/event-list.component';
 import { GameListComponent } from './game-list/game-list.component';
@@ -41,6 +45,62 @@ const routes: Routes = [
     path: 'events/:gameId',
     component: EventListComponent,
     title: 'Betting - Events'
+  },
+  {
+    path: 'game',
+    component: GameFormComponent,
+    title: 'Betting - Create Game',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'game/:gameId',
+    component: GameFormComponent,
+    title: 'Betting - Edit Game',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'event',
+    component: EventFormComponent,
+    title: 'Betting - Create Event',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'event/:eventId',
+    component: EventFormComponent,
+    title: 'Betting - Edit Event',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'team',
+    component: TeamFormComponent,
+    title: 'Betting - Create Team',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'team/:teamId',
+    component: TeamFormComponent,
+    title: 'Betting - Edit Team',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'match',
+    component: MatchFormComponent,
+    title: 'Betting - Create Match',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'match/:matchId',
+    component: MatchFormComponent,
+    title: 'Betting - Edit Match',
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
   },
   {
     path: '**',

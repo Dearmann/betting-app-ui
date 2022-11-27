@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel',
@@ -11,7 +12,7 @@ export class AdminPanelComponent implements OnInit {
   public actions: string[] = ['Game', 'Event', 'Team', 'Match'];
   public selectedAction: string = "";
 
-  constructor() { }
+  constructor(private readonly router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,10 @@ export class AdminPanelComponent implements OnInit {
     if (selectionList.selectedOptions.hasValue()) {
       this.selectedAction = selectionList.selectedOptions.selected[0].value;
     }
+  }
+
+  createButtonClicked(action: string) {
+    this.router.navigateByUrl('/' + action)
   }
 
 }
