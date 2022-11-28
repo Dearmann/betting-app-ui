@@ -8,7 +8,7 @@ import { MatSelectionList } from '@angular/material/list';
 })
 export class AdminPanelComponent implements OnInit {
 
-  public actions: string[] = ['Game', 'Event', 'Team', 'Match'];
+  public actions: string[] = ['Game', 'Event', 'Team', 'Match', 'User'];
   public selectedAction: string = "";
   public editingEntityId: number = 0;
 

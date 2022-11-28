@@ -7,7 +7,7 @@
         <div
         class="actions"
         matRipple
-        [ngStyle]="{'background-color': (selectedAction === action) ? 'lightgray' : '#ffffff'}">
+        [ngStyle]="{'background-color': (selectedAction === action || selectedAction === action + 'Form') ? 'lightgray' : '#ffffff'}">
 
           <mat-list-option
           [value]="action"
@@ -19,7 +19,8 @@
           <button
           mat-icon-button
           class="create-button"
-          (click)="createButtonClicked(action)">
+          (click)="createButtonClicked(action)"
+          *ngIf="action !== 'User'">
             <mat-icon>add_circle</mat-icon>
           </button>
 
