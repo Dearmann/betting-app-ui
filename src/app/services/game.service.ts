@@ -21,16 +21,16 @@ export class GameService {
     return this.httpClient.get<Game>(this.backendUrl + "/" + gameId);
   }
 
-  deleteGame(gameId: number): Observable<void> {
-    return this.httpClient.delete<void>(this.backendUrl + "/" + gameId);
-  }
-
   createGame(gameRequest: GameRequest): Observable<Game> {
     return this.httpClient.post<Game>(this.backendUrl, gameRequest);
   }
 
   editGame(gameRequest: GameRequest, gameId: number): Observable<Game> {
     return this.httpClient.put<Game>(this.backendUrl + "/" + gameId, gameRequest);
+  }
+
+  deleteGame(gameId: number): Observable<void> {
+    return this.httpClient.delete<void>(this.backendUrl + "/" + gameId);
   }
 
   createRequestDto(name: string, logoUrl: string): GameRequest {
