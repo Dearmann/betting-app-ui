@@ -33,4 +33,11 @@ export class GameService {
     return this.httpClient.put<Game>(this.backendUrl + "/" + gameId, gameRequest);
   }
 
+  createRequestDto(name: string, logoUrl: string): GameRequest {
+    return {
+      "name": name,
+      "logoUrl": logoUrl
+    }
+  }
+
 }

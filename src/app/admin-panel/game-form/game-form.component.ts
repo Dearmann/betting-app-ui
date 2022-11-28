@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { GameRequest } from 'src/app/model/game-request';
 import { GameService } from 'src/app/services/game.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
@@ -47,24 +46,19 @@ export class GameFormComponent implements OnInit, OnChanges {
   }
 
   create() {
-    this.gameService.createGame(this.createRequestDto()).subscribe({
+    const gameRequestDto = this.gameService.createRequestDto(this.name.value, this.logoUrl.value);
+    this.gameService.createGame(gameRequestDto).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to create game'),
       complete: () => this.snackbarService.showSuccess('Game created successfully')
     });
   }
 
   edit() {
-    this.gameService.editGame(this.createRequestDto(), this.gameId).subscribe({
-      error: (response) => this.snackbarService.showError(response, 'Failed to edit game'),
+    const gameRequestDto = this.gameService.createRequestDto(this.name.value, this.logoUrl.value);
+    this.gameService.editGame(gameRequestDto, this.gameId).subscribe({
+      error: response => this.snackbarService.showError(response, 'Failed to edit game'),
       complete: () => this.snackbarService.showSuccess('Game edited successfully')
     });
-  }
-
-  createRequestDto(): GameRequest {
-    return {
-      "name": this.name.value,
-      "logoUrl": this.logoUrl.value
-    }
   }
 
 }
