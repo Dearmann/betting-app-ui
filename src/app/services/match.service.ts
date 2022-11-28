@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Match } from '../model/match';
 import { MatchRequest } from '../model/match-request';
-import { Team } from '../model/team';
 import { Winner } from '../model/winner';
 
 @Injectable({
@@ -43,14 +42,14 @@ export class MatchService {
     return this.httpClient.delete<void>(this.backendUrl + "/" + matchId);
   }
 
-  createRequestDto(winner: Winner, start: Date, end: Date, eventId: number, team1: Team, team2: Team): MatchRequest {
+  createRequestDto(winner: Winner, start: Date, end: Date, eventId: number, team1Id: number, team2Id: number): MatchRequest {
     return {
       "winner": winner,
       "start": start,
       "end": end,
       "eventId": eventId,
-      "team1": team1,
-      "team2": team2
+      "team1Id": team1Id,
+      "team2Id": team2Id
     }
   }
   
