@@ -1,4 +1,5 @@
 import { Bet } from "./bet";
+import { Comment } from "./comment";
 import { Rating } from "./rating";
 import { Team } from "./team";
 import { Winner } from "./winner";
