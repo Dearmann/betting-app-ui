@@ -11,14 +11,15 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 export class GameFormComponent implements OnInit, OnChanges {
 
   @Input() public gameId: number = 0;
+  
   gameForm: FormGroup;
-  name: FormControl = new FormControl('');
-  logoUrl: FormControl = new FormControl('');
+  nameControl: FormControl = new FormControl('');
+  logoUrlControl: FormControl = new FormControl('');
 
   constructor(private readonly gameService: GameService, private readonly snackbarService: SnackbarService) {
     this.gameForm = new FormGroup({
-      name: this.name,
-      logoUrl: this.logoUrl
+      name: this.nameControl,
+      logoUrl: this.logoUrlControl
     });
   }
 
@@ -30,23 +31,23 @@ export class GameFormComponent implements OnInit, OnChanges {
       this.getGameById(this.gameId);
     }
     else {
-      this.name.setValue('');
-      this.logoUrl.setValue('');
+      this.nameControl.setValue('');
+      this.logoUrlControl.setValue('');
     }
   }
 
   getGameById(gameId: number) {
     this.gameService.getGameById(gameId).subscribe({
       next: response => {
-        this.name.setValue(response.name);
-        this.logoUrl.setValue(response.logoUrl);
+        this.nameControl.setValue(response.name);
+        this.logoUrlControl.setValue(response.logoUrl);
       },
       error: response => this.snackbarService.showError(response, 'Failed to retrieve game')
     });
   }
 
   create() {
-    const gameRequestDto = this.gameService.createRequestDto(this.name.value, this.logoUrl.value);
+    const gameRequestDto = this.gameService.createRequestDto(this.nameControl.value, this.logoUrlControl.value);
     this.gameService.createGame(gameRequestDto).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to create game'),
       complete: () => this.snackbarService.showSuccess('Game created successfully')
@@ -54,7 +55,7 @@ export class GameFormComponent implements OnInit, OnChanges {
   }
 
   edit() {
-    const gameRequestDto = this.gameService.createRequestDto(this.name.value, this.logoUrl.value);
+    const gameRequestDto = this.gameService.createRequestDto(this.nameControl.value, this.logoUrlControl.value);
     this.gameService.editGame(gameRequestDto, this.gameId).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to edit game'),
       complete: () => this.snackbarService.showSuccess('Game edited successfully')

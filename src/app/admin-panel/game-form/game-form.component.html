@@ -1,12 +1,16 @@
 <form [formGroup]="gameForm">
+
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
-    <input [formControl]="name" required matNativeControl matInput>
+    <input [formControl]="nameControl" required matNativeControl matInput>
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Logo URL</mat-label>
-    <input [formControl]="logoUrl" matNativeControl matInput>
+    <input [formControl]="logoUrlControl" matNativeControl matInput>
   </mat-form-field>
+
   <button *ngIf="gameId === 0" type="submit" mat-raised-button (click)="create()">Create</button>
   <button *ngIf="gameId !== 0" type="submit" mat-raised-button (click)="edit()">Edit</button>
+  
 </form>
