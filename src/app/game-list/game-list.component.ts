@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Game } from '../model/game';
 import { GameService } from '../services/game.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-game-list',
@@ -11,9 +12,10 @@ import { GameService } from '../services/game.service';
 export class GameListComponent {
 
   public games: Game[] = [];
-  public error: any;
 
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(private gameService: GameService,
+    private router: Router,
+    private readonly snackbarService: SnackbarService) { }
 
   ngOnInit() {
     this.getAllGames()
@@ -21,8 +23,8 @@ export class GameListComponent {
 
   getAllGames() {
     this.gameService.getAllGames().subscribe({
-      next: response => { this.games = response },
-      error: error => { this.error = error }
+      next: response => this.games = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve games')
     });
   }
 

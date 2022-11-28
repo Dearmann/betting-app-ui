@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Match } from 'src/app/model/match';
 import { MatchService } from 'src/app/services/match.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-confirm-delete.component';
 
 @Component({
@@ -11,11 +12,14 @@ import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-co
 })
 export class AdminMatchListComponent implements OnInit {
 
-  public error: any;
   public matches!: Match[];
   @Output() matchIdEmitter = new EventEmitter<number>();
 
-  constructor(private readonly matchService: MatchService, public readonly dialog: MatDialog) { }
+  constructor(
+    private readonly matchService: MatchService,
+    private readonly dialog: MatDialog,
+    private readonly snackbarService: SnackbarService
+  ) { }
 
   ngOnInit(): void {
     this.getAllMatches();
@@ -24,7 +28,7 @@ export class AdminMatchListComponent implements OnInit {
   getAllMatches() {
     this.matchService.getAllMatches().subscribe({
       next: response => { this.matches = response },
-      error: error => { this.error = error }
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve matches')
     });
   }
 
@@ -45,8 +49,11 @@ export class AdminMatchListComponent implements OnInit {
 
   deleteMatch(matchId: number) {
     this.matchService.deleteMatch(matchId).subscribe({
-      error: error => this.error = error,
-      complete: () => this.getAllMatches()
+      error: response => this.snackbarService.showError(response, 'Failed to delete match'),
+      complete: () => {
+        this.getAllMatches();
+        this.snackbarService.showSuccess('Match deleted successfully');
+      }
     })
   }
 

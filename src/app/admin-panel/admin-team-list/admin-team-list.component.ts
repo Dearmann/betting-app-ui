@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Team } from 'src/app/model/team';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TeamService } from 'src/app/services/team.service';
 import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-confirm-delete.component';
 
@@ -11,11 +12,12 @@ import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-co
 })
 export class AdminTeamListComponent implements OnInit {
 
-  public error: any;
   public teams!: Team[];
   @Output() teamIdEmitter = new EventEmitter<number>();
 
-  constructor(private readonly teamService: TeamService, public readonly dialog: MatDialog) { }
+  constructor(private readonly teamService: TeamService,
+    private readonly dialog: MatDialog,
+    private readonly snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.getAllTeams();
@@ -23,8 +25,8 @@ export class AdminTeamListComponent implements OnInit {
 
   getAllTeams() {
     this.teamService.getAllTeams().subscribe({
-      next: response => { this.teams = response },
-      error: error => { this.error = error }
+      next: response => this.teams = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve teams')
     });
   }
 
@@ -45,8 +47,11 @@ export class AdminTeamListComponent implements OnInit {
 
   deleteTeam(teamId: number) {
     this.teamService.deleteTeam(teamId).subscribe({
-      error: error => this.error = error,
-      complete: () => this.getAllTeams()
+      error: response => this.snackbarService.showError(response, 'Failed to delete team'),
+      complete: () => {
+        this.getAllTeams();
+        this.snackbarService.showSuccess('Team deleted successfully');
+      }
     })
   }
 

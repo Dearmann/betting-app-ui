@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Game } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-confirm-delete.component';
 
 @Component({
@@ -11,11 +12,12 @@ import { DialogConfirmDeleteComponent } from '../dialog-confirm-delete/dialog-co
 })
 export class AdminGameListComponent implements OnInit {
 
-  public error: any;
   public games!: Game[];
   @Output() gameIdEmitter = new EventEmitter<number>();
 
-  constructor(private readonly gameService: GameService, public readonly dialog: MatDialog) { }
+  constructor(private readonly gameService: GameService,
+    private readonly dialog: MatDialog,
+    private readonly snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.getAllGames();
@@ -24,7 +26,7 @@ export class AdminGameListComponent implements OnInit {
   getAllGames() {
     this.gameService.getAllGames().subscribe({
       next: response => { this.games = response },
-      error: error => { this.error = error }
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve games')
     });
   }
 
@@ -45,8 +47,11 @@ export class AdminGameListComponent implements OnInit {
 
   deleteGame(gameId: number) {
     this.gameService.deleteGame(gameId).subscribe({
-      error: error => this.error = error,
-      complete: () => this.getAllGames()
+      error: response => this.snackbarService.showError(response, 'Failed to delete game'),
+      complete: () => {
+        this.getAllGames();
+        this.snackbarService.showSuccess('Game deleted successfully');
+      }
     })
   }
 

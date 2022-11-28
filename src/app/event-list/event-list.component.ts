@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GameService } from '../services/game.service';
+import { Event } from '../model/event';
 import { Game } from '../model/game';
 import { EventService } from '../services/event.service';
-import { Event } from '../model/event';
+import { GameService } from '../services/game.service';
 import { MatchService } from '../services/match.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-event-list',
@@ -16,13 +17,13 @@ export class EventListComponent implements OnInit {
   public events: Event[] = [];
   public game!: Game;
   public gameId: number;
-  public error: any;
 
   constructor(
     private readonly eventService: EventService,
     private readonly route: ActivatedRoute,
     private readonly gameService: GameService,
-    private readonly matchService: MatchService
+    private readonly matchService: MatchService,
+    private readonly snackbarService: SnackbarService
   ) {
     this.gameId = parseInt(this.route.snapshot.paramMap.get('gameId') || "");
   }
@@ -39,29 +40,29 @@ export class EventListComponent implements OnInit {
 
   getEventsByGameId(gameId: number) {
     this.eventService.getEventsByGameId(gameId).subscribe({
-      next: response => { this.events = response },
-      error: error => { this.error = error }
+      next: response => this.events = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve events')
     });
   }
 
   getGameById(gameId: number) {
     this.gameService.getGameById(gameId).subscribe({
-      next: response => { this.game = response },
-      error: error => { this.error = error }
+      next: response => this.game = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve game')
     });
   }
 
   getMatchesByEventId(eventId: number, eventToAssignMatches: Event) {
     this.matchService.getMatchesByEventId(eventId).subscribe({
-      next: response => { eventToAssignMatches.matches = response },
-      error: error => { this.error = error }
+      next: response => eventToAssignMatches.matches = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve matches')
     })
   }
 
   getAllEvents() {
     this.eventService.getAllEvents().subscribe({
-      next: response => { this.events = response },
-      error: error => { this.error = error }
+      next: response => this.events = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve events')
     })
   }
 
