@@ -19,7 +19,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { RankingComponent } from './ranking/ranking.component';
-import { MatRippleModule } from '@angular/material/core';
+import { MatOptionModule, MatRippleModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatchListComponent } from './match-list/match-list.component';
 import { MatListModule } from '@angular/material/list';
@@ -37,6 +37,11 @@ import { TeamFormComponent } from './admin-panel/team-form/team-form.component';
 import { MatchFormComponent } from './admin-panel/match-form/match-form.component';
 import { DialogConfirmDeleteComponent } from './admin-panel/dialog-confirm-delete/dialog-confirm-delete.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -76,7 +81,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSidenavModule,
     MatTooltipModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [
     ConfigService,
