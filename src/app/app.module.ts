@@ -19,10 +19,30 @@ import { EventListComponent } from './event-list/event-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { RankingComponent } from './ranking/ranking.component';
-import { MatRippleModule } from '@angular/material/core';
+import { MatOptionModule, MatRippleModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatchListComponent } from './match-list/match-list.component';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TeamListComponent } from './team-list/team-list.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { AdminGameListComponent } from './admin-panel/admin-game-list/admin-game-list.component';
+import { AdminEventListComponent } from './admin-panel/admin-event-list/admin-event-list.component';
+import { AdminTeamListComponent } from './admin-panel/admin-team-list/admin-team-list.component';
+import { AdminMatchListComponent } from './admin-panel/admin-match-list/admin-match-list.component';
+import { GameFormComponent } from './admin-panel/game-form/game-form.component';
+import { EventFormComponent } from './admin-panel/event-form/event-form.component';
+import { TeamFormComponent } from './admin-panel/team-form/team-form.component';
+import { MatchFormComponent } from './admin-panel/match-form/match-form.component';
+import { DialogConfirmDeleteComponent } from './admin-panel/dialog-confirm-delete/dialog-confirm-delete.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +53,18 @@ import { MatListModule } from '@angular/material/list';
     EventListComponent,
     AdminPanelComponent,
     RankingComponent,
-    MatchListComponent
+    MatchListComponent,
+    TeamListComponent,
+    AdminGameListComponent,
+    AdminEventListComponent,
+    AdminTeamListComponent,
+    AdminMatchListComponent,
+    GameFormComponent,
+    EventFormComponent,
+    TeamFormComponent,
+    MatchFormComponent,
+    DialogConfirmDeleteComponent,
+    AdminUserListComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +79,18 @@ import { MatListModule } from '@angular/material/list';
     MatExpansionModule,
     MatRippleModule,
     MatProgressBarModule,
-    MatListModule
+    MatListModule,
+    MatSidenavModule,
+    MatTooltipModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [
     ConfigService,

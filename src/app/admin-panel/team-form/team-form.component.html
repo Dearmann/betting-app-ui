@@ -1,0 +1,25 @@
+<form [formGroup]="teamForm">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input [formControl]="nameControl" required matNativeControl matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Logo URL</mat-label>
+    <input [formControl]="logoUrlControl" matNativeControl matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="teamId === 0">
+    <mat-label>Game</mat-label>
+    <mat-select [formControl]="gameIdControl" required>
+      <mat-option *ngFor="let game of games" [value]="game.id">
+        {{game.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button *ngIf="teamId === 0" type="submit" mat-raised-button (click)="create()">Create</button>
+  <button *ngIf="teamId !== 0" type="submit" mat-raised-button (click)="edit()">Edit</button>
+
+</form>

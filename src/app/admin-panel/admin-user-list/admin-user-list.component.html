@@ -1,0 +1,46 @@
+<mat-progress-bar *ngIf="!users" mode="indeterminate"></mat-progress-bar>
+
+<mat-list *ngIf="users" class="content-list">
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let user of users">
+    <div mat-line class="entity">{{user.username}}</div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">ID: </span>
+      <span>{{user.id}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Enabled: </span>
+      <span>{{user.enabled}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Email verified: </span>
+      <span>{{user.emailVerified}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Email: </span>
+      <span>{{user.email}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">First Name: </span>
+      <span>{{user.firstName}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Last Name: </span>
+      <span>{{user.lastName}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Created at: </span>
+      <span>{{user.createdTimestamp | date}}</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or Delete admin menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="deleteButtonClicked(user.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

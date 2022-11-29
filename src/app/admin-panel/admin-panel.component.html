@@ -1,1 +1,46 @@
-<p>admin-panel works!</p>
+<mat-sidenav-container class="admin-panel">
+
+  <mat-sidenav mode="side" opened>
+    <mat-selection-list #selectionList [multiple]="false" class="selection-list">
+      <div *ngFor="let action of actions">
+
+        <div
+        class="actions"
+        matRipple
+        [ngStyle]="{'background-color': (selectedAction === action || selectedAction === action + 'Form') ? 'lightgray' : '#ffffff'}">
+
+          <mat-list-option
+          [value]="action"
+          [disableRipple]="true"
+          (click)="selectAction(selectionList)">
+            {{action}}
+          </mat-list-option>
+
+          <button
+          mat-icon-button
+          class="create-button"
+          (click)="createButtonClicked(action)"
+          *ngIf="action !== 'User'">
+            <mat-icon>add_circle</mat-icon>
+          </button>
+
+        </div>
+
+        <mat-divider></mat-divider>
+      </div>
+    </mat-selection-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-admin-game-list *ngIf="selectedAction === 'Game'" (gameIdEmitter)="editButtonClicked($event)"></app-admin-game-list>
+    <app-admin-event-list *ngIf="selectedAction === 'Event'" (eventIdEmitter)="editButtonClicked($event)"></app-admin-event-list>
+    <app-admin-team-list *ngIf="selectedAction === 'Team'" (teamIdEmitter)="editButtonClicked($event)"></app-admin-team-list>
+    <app-admin-match-list *ngIf="selectedAction === 'Match'" (matchIdEmitter)="editButtonClicked($event)"></app-admin-match-list>
+    <app-admin-user-list *ngIf="selectedAction === 'User'"></app-admin-user-list>
+    <app-game-form *ngIf="selectedAction === 'GameForm'" [gameId]="editingEntityId"></app-game-form>
+    <app-event-form *ngIf="selectedAction === 'EventForm'" [eventId]="editingEntityId"></app-event-form>
+    <app-team-form *ngIf="selectedAction === 'TeamForm'" [teamId]="editingEntityId"></app-team-form>
+    <app-match-form *ngIf="selectedAction === 'MatchForm'" [matchId]="editingEntityId"></app-match-form>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

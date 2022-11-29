@@ -1,0 +1,42 @@
+<mat-progress-bar *ngIf="!matches" mode="indeterminate"></mat-progress-bar>
+
+<mat-list *ngIf="matches" class="content-list">
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let match of matches">
+    <div mat-line class="entity">{{match.team1.name}} vs {{match.team2.name}}</div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">ID: </span>
+      <span>{{match.id}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Winner: </span>
+      <span>{{match.winner}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Start date: </span>
+      <span>{{match.start}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">End date: </span>
+      <span>{{match.end}}</span>
+    </div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">Event ID: </span>
+      <span>{{match.eventId}}</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or Delete admin menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editButtonClicked(match.id)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="deleteButtonClicked(match.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

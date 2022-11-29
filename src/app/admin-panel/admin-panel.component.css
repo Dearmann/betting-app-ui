@@ -1,0 +1,24 @@
+.admin-panel {
+  height: 100%;
+}
+
+.selection-list {
+  padding: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.create-button {
+  color: rgb(117, 117, 117);
+}
+
+.mat-list-option, .mat-list-option:hover, .mat-list-option.mat-list-item-focus{
+  background: inherit;
+}
+.mat-selection-list /deep/ .mat-list-item-disabled  h5, .mat-selection-list /deep/ .mat-list-item-disabled mat-pseudo-checkbox {
+   color: #b0b0b0;
+}

@@ -7,12 +7,12 @@
   (click)="eventClicked(event.id, i)">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{event.name}}
+        <span>{{event.name}}</span>
       </mat-panel-title>
       <mat-panel-description>
-        <span>Season - {{event.season}}</span>
-        <span>Region - {{event.region}}</span>
-        <span>{{event.start.toString().split('T')[0]}} - {{event.end.toString().split('T')[0]}}</span>
+        <span style="width: 87px;">Season - {{event.season}}</span>
+        <span style="width: 120px;">Region - {{event.region}}</span>
+        <span>{{event.start | date}} - {{event.end | date}}</span>
       </mat-panel-description>
     </mat-expansion-panel-header>
 

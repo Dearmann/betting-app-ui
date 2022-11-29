@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameService } from '../services/game.service';
 import { Game } from '../model/game';
+import { GameService } from '../services/game.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-game-list',
@@ -11,9 +12,10 @@ import { Game } from '../model/game';
 export class GameListComponent {
 
   public games: Game[] = [];
-  public error: any;
 
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(private gameService: GameService,
+    private router: Router,
+    private readonly snackbarService: SnackbarService) { }
 
   ngOnInit() {
     this.getAllGames()
@@ -21,8 +23,8 @@ export class GameListComponent {
 
   getAllGames() {
     this.gameService.getAllGames().subscribe({
-      next: response => { this.games = response },
-      error: error => { this.error = error }
+      next: response => this.games = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve games')
     });
   }
 
@@ -33,7 +35,9 @@ export class GameListComponent {
     return "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Video-Game-Controller-Icon-IDV-green.svg/2048px-Video-Game-Controller-Icon-IDV-green.svg.png";
   }
 
-  gameClicked(gameId: number) {
-    this.router.navigateByUrl("/events/" + gameId);
+  gameClicked(gameId: number, index: number) {
+    if (this.games[index].eventIds.length !== 0) {
+      this.router.navigateByUrl("/events/" + gameId);
+    }
   }
 }

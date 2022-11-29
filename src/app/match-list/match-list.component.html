@@ -1,4 +1,5 @@
-<mat-list class="match-list">
+<mat-progress-bar *ngIf="!matches" mode="indeterminate"></mat-progress-bar>
+<mat-list *ngIf="matches" class="match-list">
   <mat-divider></mat-divider>
   <mat-list-item
   *ngFor="let match of matches; index as i"
