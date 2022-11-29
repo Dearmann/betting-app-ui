@@ -1,4 +1,5 @@
-<img *ngIf="game" [src]="game.logoUrl" [alt]="game.name" class="game-logo">
+<img *ngIf="game && game.logoUrl" [src]="game.logoUrl" [alt]="game.name" class="game-logo">
+<div *ngIf="game && !game.logoUrl" class="game-name mat-title">{{game.name}}</div>
 <mat-accordion multi>
   <mat-expansion-panel
   hideToggle
@@ -10,9 +11,9 @@
         <span>{{event.name}}</span>
       </mat-panel-title>
       <mat-panel-description>
-        <span style="width: 87px;">Season - {{event.season}}</span>
-        <span style="width: 120px;">Region - {{event.region}}</span>
-        <span>{{event.start | date}} - {{event.end | date}}</span>
+        <span style="width: 87px;"> {{event.season ? 'Season - ' + event.season : ''}}</span>
+        <span style="width: 120px;"> {{event.region ? 'Region - ' + event.region : ''}}</span>
+        <span style="width: 200px; text-align: right;"> {{event.start && event.end ? (event.start | date) + ' - ' + (event.end | date) : ''}}</span>
       </mat-panel-description>
     </mat-expansion-panel-header>
 

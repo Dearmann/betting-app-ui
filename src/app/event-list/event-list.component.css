@@ -10,6 +10,13 @@
   border-radius: 1%;
 }
 
+.game-name {
+  text-align: center;
+  font-size: xxx-large;
+  margin: 50px;
+
+}
+
 .event-list .mat-expansion-panel-header-description {
   justify-content: space-between;
   align-items: center;
