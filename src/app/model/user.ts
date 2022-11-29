@@ -3,12 +3,14 @@ import { Comment } from "./comment";
 import { Rating } from "./rating";
 
 export interface User {
-  keycloakId: string;
+  id: string;
   username: string;
+  enabled: boolean
+  emailVerified: boolean;
   email: string;
-  firstname: string;
-  lastname: string;
-  createdAtTimestamp: number;
+  firstName: string;
+  lastName: string;
+  createdTimestamp: number;
   bets: Bet[];
   comments: Comment[];
   ratings: Rating[];
