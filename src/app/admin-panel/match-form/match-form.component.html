@@ -11,7 +11,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Start date</mat-label>
-    <input [formControl]="startControl" required matNativeControl matInput type="datetime-local" placeholder="Start date">
+    <input [formControl]="startControl" required matNativeControl matInput type="datetime-local" placeholder="Start date" (input)="startSelected()">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -20,9 +20,18 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill" *ngIf="matchId === 0">
+    <mat-label>Game</mat-label>
+    <mat-select [formControl]="gameIdControl" required (selectionChange)="gameSelected()">
+      <mat-option *ngFor="let game of allGames" [value]="game.id">
+        {{game.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="matchId === 0">
     <mat-label>Event</mat-label>
     <mat-select [formControl]="eventIdControl" required>
-      <mat-option *ngFor="let event of events" [value]="event.id">
+      <mat-option *ngFor="let event of filteredEvents" [value]="event.id">
         {{event.name}}
       </mat-option>
     </mat-select>
@@ -30,8 +39,8 @@
 
   <mat-form-field appearance="fill" *ngIf="matchId === 0">
     <mat-label>Team one</mat-label>
-    <mat-select [formControl]="team1IdControl" required>
-      <mat-option *ngFor="let team of teams" [value]="team.id">
+    <mat-select [formControl]="team1IdControl" required (selectionChange)="teamSelected()">
+      <mat-option *ngFor="let team of teamsOne" [value]="team.id">
         {{team.name}}
       </mat-option>
     </mat-select>
@@ -39,8 +48,8 @@
 
   <mat-form-field appearance="fill" *ngIf="matchId === 0">
     <mat-label>Team two</mat-label>
-    <mat-select [formControl]="team2IdControl" required>
-      <mat-option *ngFor="let team of teams" [value]="team.id">
+    <mat-select [formControl]="team2IdControl" required (selectionChange)="teamSelected()">
+      <mat-option *ngFor="let team of teamsTwo" [value]="team.id">
         {{team.name}}
       </mat-option>
     </mat-select>

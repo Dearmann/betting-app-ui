@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Event } from 'src/app/model/event';
+import { Game } from 'src/app/model/game';
 import { Team } from 'src/app/model/team';
 import { Winner } from 'src/app/model/winner';
 import { EventService } from 'src/app/services/event.service';
+import { GameService } from 'src/app/services/game.service';
 import { MatchService } from 'src/app/services/match.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TeamService } from 'src/app/services/team.service';
@@ -21,16 +23,24 @@ export class MatchFormComponent implements OnInit {
   winnerControl: FormControl = new FormControl('');
   startControl: FormControl = new FormControl('');
   endControl: FormControl = new FormControl('');
-  eventIdControl: FormControl = new FormControl('');
-  team1IdControl: FormControl = new FormControl('');
-  team2IdControl: FormControl = new FormControl('');
+  eventIdControl: FormControl = new FormControl({value: '', disabled: true});
+  team1IdControl: FormControl = new FormControl({value: '', disabled: true});
+  team2IdControl: FormControl = new FormControl({value: '', disabled: true});
 
-  events: Event[] = [];
-  teams: Team[] = [];
+  gameIdControl: FormControl = new FormControl(0);
+
+  allGames: Game[] = [];
+  allEvents: Event[] = [];
+  allTeams: Team[] = [];
+  filteredEvents: Event[] = [];
+  filteredTeams: Team[] = [];
+  teamsOne: Team[] = [];
+  teamsTwo: Team[] = [];
   winnerEnum: Winner[] = [Winner.TBD, Winner.TEAM_1, Winner.TEAM_2];
 
   constructor(private readonly matchService: MatchService,
     private readonly snackbarService: SnackbarService,
+    private readonly gameService: GameService,
     private readonly eventService: EventService,
     private readonly teamService: TeamService) {
     this.matchForm = new FormGroup({
@@ -44,6 +54,7 @@ export class MatchFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllGames();
     this.getAllEvents();
     this.getAllTeams();
   }
@@ -106,18 +117,51 @@ export class MatchFormComponent implements OnInit {
     });
   }
 
+  getAllGames() {
+    this.gameService.getAllGames().subscribe({
+      next: response => { this.allGames = response },
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve games')
+    });
+  }
+
   getAllEvents() {
     this.eventService.getAllEvents().subscribe({
-      next: response => this.events = response,
+      next: response => this.allEvents = response,
       error: response => this.snackbarService.showError(response, 'Failed to retrieve events')
     });
   }
 
   getAllTeams() {
     this.teamService.getAllTeams().subscribe({
-      next: response => this.teams = response,
+      next: response => this.allTeams = response,
       error: response => this.snackbarService.showError(response, 'Failed to retrieve teams')
     });
+  }
+
+  startSelected() {
+    // Set end date 1h after the start date
+    let endDate = new Date(this.startControl.value);
+    endDate.setUTCHours(endDate.getHours() + 1);
+    this.endControl.setValue(endDate.toISOString().substring(0, 16));
+  }
+
+  gameSelected() {
+    this.eventIdControl.enable();
+    this.team1IdControl.enable();
+    this.team2IdControl.enable();
+    this.eventIdControl.setValue('');
+    this.team1IdControl.setValue('');
+    this.team2IdControl.setValue('');
+    this.filteredEvents = this.allEvents.filter(event => event.gameId === this.gameIdControl.value);
+    this.filteredTeams = this.allTeams.filter(team => team.gameId === this.gameIdControl.value);
+    this.teamsOne = this.filteredTeams;
+    this.teamsTwo = this.filteredTeams;
+
+  }
+
+  teamSelected() {
+    this.teamsTwo = this.filteredTeams.filter(team => team.id !== this.team1IdControl.value);
+    this.teamsOne = this.filteredTeams.filter(team => team.id !== this.team2IdControl.value);
   }
 
 }
