@@ -21,6 +21,10 @@ export class TeamService {
     return this.httpClient.get<Team>(this.backendUrl + "/" + teamId);
   }
 
+  getTeamsByGameId(gameId: number): Observable<Team[]> {
+    return this.httpClient.get<Team[]>(this.backendUrl + "/by-game/" + gameId);
+  }
+
   createTeam(teamRequest: TeamRequest): Observable<Team> {
     return this.httpClient.post<Team>(this.backendUrl, teamRequest);
   }
