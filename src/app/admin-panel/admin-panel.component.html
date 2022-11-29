@@ -36,6 +36,7 @@
     <app-admin-event-list *ngIf="selectedAction === 'Event'" (eventIdEmitter)="editButtonClicked($event)"></app-admin-event-list>
     <app-admin-team-list *ngIf="selectedAction === 'Team'" (teamIdEmitter)="editButtonClicked($event)"></app-admin-team-list>
     <app-admin-match-list *ngIf="selectedAction === 'Match'" (matchIdEmitter)="editButtonClicked($event)"></app-admin-match-list>
+    <app-admin-user-list *ngIf="selectedAction === 'User'"></app-admin-user-list>
     <app-game-form *ngIf="selectedAction === 'GameForm'" [gameId]="editingEntityId"></app-game-form>
     <app-event-form *ngIf="selectedAction === 'EventForm'" [eventId]="editingEntityId"></app-event-form>
     <app-team-form *ngIf="selectedAction === 'TeamForm'" [teamId]="editingEntityId"></app-team-form>
