@@ -3,7 +3,11 @@
 <mat-list *ngIf="teams" class="content-list">
   <mat-divider></mat-divider>
   <mat-list-item *ngFor="let team of teams">
-    <div mat-line class="entity">[{{team.id}}] {{team.name}}</div>
+    <div mat-line class="entity">{{team.name}}</div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">ID: </span>
+      <span>{{team.id}}</span>
+    </div>
     <div mat-line class="entity-field-container">
       <span class="entity-field-name">Logo URL: </span>
       <span>{{team.logoUrl}}</span>

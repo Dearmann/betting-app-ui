@@ -3,7 +3,11 @@
 <mat-list *ngIf="matches" class="content-list">
   <mat-divider></mat-divider>
   <mat-list-item *ngFor="let match of matches">
-    <div mat-line class="entity">[{{match.id}}] {{match.team1.name}} vs {{match.team2.name}}</div>
+    <div mat-line class="entity">{{match.team1.name}} vs {{match.team2.name}}</div>
+    <div mat-line class="entity-field-container">
+      <span class="entity-field-name">ID: </span>
+      <span>{{match.id}}</span>
+    </div>
     <div mat-line class="entity-field-container">
       <span class="entity-field-name">Winner: </span>
       <span>{{match.winner}}</span>
