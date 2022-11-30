@@ -1,26 +1,31 @@
-<mat-list *ngIf="comments">
-  <mat-divider></mat-divider>
-  <mat-list-item *ngFor="let comment of comments">
+<div *ngIf="comments">
+  <div *ngFor="let comment of comments">
+    <mat-card *ngIf="comment.username" class="comment">
 
-    <div mat-line>{{comment.username}}</div>
-    <div mat-line>{{comment.createdDateTime}}</div>
-    <div mat-line>{{comment.message}}</div>
+      <mat-card-header class="card-content">
+        <mat-card-title>{{comment.username}}</mat-card-title>
+        <mat-card-subtitle>{{comment.createdDateTime}}</mat-card-subtitle>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or delete comment">
-      <mat-icon>more_vert</mat-icon>
-    </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or delete comment">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-card-header>
 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="editComment(comment.id)">
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
-      </button>
-      <button mat-menu-item (click)="deleteComment(comment.id)">
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-      </button>
-    </mat-menu>
+      <mat-card-content class="message">
+        {{comment.message}}
+      </mat-card-content>
 
-    <mat-divider></mat-divider>
-  </mat-list-item>
-</mat-list>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editComment(comment.id)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="deleteComment(comment.id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+
+    </mat-card>
+  </div>
+</div>
