@@ -44,6 +44,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user-list.component';
 import { MatchComponent } from './match/match.component';
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { MatchComponent } from './match/match.component';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
     ConfigService,
