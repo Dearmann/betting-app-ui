@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Match } from '../model/match';
+import { Rating } from '../model/rating';
 import { MatchService } from '../services/match.service';
 import { SnackbarService } from '../services/snackbar.service';
 
@@ -11,6 +13,8 @@ import { SnackbarService } from '../services/snackbar.service';
 export class MatchComponent implements OnInit {
 
   matchId: number;
+  match!: Match;
+  averageRating: number = 0;
 
   constructor(
     private readonly matchService: MatchService,
@@ -25,6 +29,22 @@ export class MatchComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.getMatchWithInteractionsById(this.matchId);
+  }
+
+  getMatchWithInteractionsById(matchId: number) {
+    this.matchService.getMatchWithInteractionsById(matchId).subscribe({
+      next: response => this.match = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve match'),
+      complete: () => this.calculateAverageRating(this.match.ratings)
+    });
+  }
+
+  calculateAverageRating(ratings: Rating[]) {
+    if (ratings.length) {
+      ratings.forEach(rating => this.averageRating += rating.rating);
+      this.averageRating /= ratings.length;
+    }
   }
 
 }

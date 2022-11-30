@@ -22,6 +22,10 @@ export class MatchService {
     return this.httpClient.get<Match>(this.backendUrl + "/" + matchId);
   }
 
+  getMatchWithInteractionsById(matchId: number): Observable<Match> {
+    return this.httpClient.get<Match>(this.backendUrl + "/interactions/" + matchId);
+  }
+
   getMatchesByEventId(eventId: number): Observable<Match[]> {
     return this.httpClient.get<Match[]>(this.backendUrl + "/by-event/" + eventId);
   }
