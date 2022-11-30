@@ -1,3 +1,5 @@
+<mat-progress-bar *ngIf="!match" mode="indeterminate"></mat-progress-bar>
+
 <mat-card *ngIf="match" class="match-card">
   <mat-card-header>
       <mat-card-title class="card-rating">
@@ -13,7 +15,10 @@
   <mat-card-content class="match">
 
       <div class="team" style="justify-content: right;">
-        <span class="team-name" style="text-align: right;">{{ match.team1.name }}</span>
+        <div class="team-name" style="text-align: right;">
+          <span>{{match.team1.name}}</span>
+          <span class="pick-percentage">Picked: {{betPercentageTeam1 | percent}}</span>
+        </div>
         <img class="team-logo" [src]="match.team1.logoUrl" alt="">
       </div>
   
@@ -23,7 +28,10 @@
   
       <div class="team" style="justify-content: left;">
         <img class="team-logo" [src]="match.team2.logoUrl" alt="">
-        <span class="team-name" style="text-align: left;">{{ match.team2.name }}</span>
+        <div class="team-name" style="text-align: left;">
+          <span>{{match.team2.name}}</span>
+          <span class="pick-percentage">Picked: {{betPercentageTeam2 | percent}}</span>
+        </div>
       </div>
 
   </mat-card-content>

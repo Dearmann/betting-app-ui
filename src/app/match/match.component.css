@@ -23,7 +23,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  text-align: center;
 }
 
 .team-logo {
@@ -34,6 +33,13 @@
   width: 130px;
   margin: 0 30px;
   line-height: normal;
+}
+
+.pick-percentage {
+  display: block;
+  color: rgba(0, 0, 0, .30);
+  font-size: large;
+  margin-top: 3px;
 }
 
 .score {
