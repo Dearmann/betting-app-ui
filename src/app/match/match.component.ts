@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Match } from '../model/match';
 import { Rating } from '../model/rating';
 import { MatchService } from '../services/match.service';
+import { RatingService } from '../services/rating.service';
 import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class MatchComponent implements OnInit {
     private readonly matchService: MatchService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly snackbarService: SnackbarService
+    private readonly snackbarService: SnackbarService,
+    private readonly ratingService: RatingService
     ) {
       this.matchId = parseInt(this.route.snapshot.paramMap.get('matchId') || "");
       if (!this.matchId) {
@@ -45,6 +47,10 @@ export class MatchComponent implements OnInit {
       ratings.forEach(rating => this.averageRating += rating.rating);
       this.averageRating /= ratings.length;
     }
+  }
+
+  matchRated(event: any) {
+    console.log(event.rating);
   }
 
 }

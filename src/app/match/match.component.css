@@ -4,6 +4,12 @@
   max-width: 950px;
 }
 
+.card-rating {
+  display: inline-flex;
+  font-size: x-large;
+  font-weight: 300;
+}
+
 .match {
   margin: 40px 0;
   display: flex;
