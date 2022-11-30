@@ -33,6 +33,7 @@
 .score {
   width: 100px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .date {
