@@ -1,22 +1,28 @@
-<mat-progress-bar *ngIf="!match" mode="indeterminate"></mat-progress-bar>
+<mat-card *ngIf="match" class="match-card">
+  <mat-card-header>
+      <mat-card-title>{{averageRating}}</mat-card-title>
+      <mat-card-subtitle>{{match.start | date:'dd-MM-yyyy'}} {{ match.start | date:'HH:mm'}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="match">
 
-<div *ngIf="match" class="match-main">
+      <div class="team" style="justify-content: right;">
+        <span class="team-name" style="text-align: right;">{{ match.team1.name }}</span>
+        <img class="team-logo" [src]="match.team1.logoUrl" alt="">
+      </div>
+  
+      <span *ngIf="match.winner === 'TBD'" class="score">0 : 0</span>
+      <span *ngIf="match.winner === 'TEAM_1'" class="score">1 : 0</span>
+      <span *ngIf="match.winner === 'TEAM_2'" class="score">0 : 1</span>
+  
+      <div class="team" style="justify-content: left;">
+        <img class="team-logo" [src]="match.team2.logoUrl" alt="">
+        <span class="team-name" style="text-align: left;">{{ match.team2.name }}</span>
+      </div>
 
-  <div class="match">
-    <div class="team" style="justify-content: right;">
-      <span class="team-name" style="text-align: right;">{{ match.team1.name }}</span>
-      <img [src]="match.team1.logoUrl" alt="" class="team-logo">
-    </div>
-
-    <span *ngIf="match.winner === 'TBD'" class="score">0 : 0</span>
-    <span *ngIf="match.winner === 'TEAM_1'" class="score">1 : 0</span>
-    <span *ngIf="match.winner === 'TEAM_2'" class="score">0 : 1</span>
-
-    <div class="team" style="justify-content: left;">
-      <img [src]="match.team2.logoUrl" alt="" class="team-logo">
-      <span class="team-name" style="text-align: left;">{{ match.team2.name }}</span>
-    </div>
-  </div>
-
-  <span class="date">{{match.start | date:'dd-MM-yyyy'}} {{ match.start | date:'HH:mm'}}</span>
-</div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-header class="comment-section">
+    <mat-card-subtitle>Comments:</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
