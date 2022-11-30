@@ -1,0 +1,43 @@
+.match-main {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.match {
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: xx-large;
+}
+
+.team {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.team-logo {
+  height: 100px;
+}
+
+.team-name {
+  width: 200px;
+  margin: 0 30px;
+  line-height: normal;
+}
+
+.score {
+  width: 300px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.date {
+  color: rgba(0, 0, 0, .54);
+  text-align: center;
+  font-weight: lighter;
+  font-size: 15px;
+}

@@ -1,3 +1,22 @@
-<p>match works!</p>
-{{matchId}}
-{{averageRating}}
+<mat-progress-bar *ngIf="!match" mode="indeterminate"></mat-progress-bar>
+
+<div *ngIf="match" class="match-main">
+
+  <div class="match">
+    <div class="team" style="justify-content: right;">
+      <span class="team-name" style="text-align: right;">{{ match.team1.name }}</span>
+      <img [src]="match.team1.logoUrl" alt="" class="team-logo">
+    </div>
+
+    <span *ngIf="match.winner === 'TBD'" class="score">0 : 0</span>
+    <span *ngIf="match.winner === 'TEAM_1'" class="score">1 : 0</span>
+    <span *ngIf="match.winner === 'TEAM_2'" class="score">0 : 1</span>
+
+    <div class="team" style="justify-content: left;">
+      <img [src]="match.team2.logoUrl" alt="" class="team-logo">
+      <span class="team-name" style="text-align: left;">{{ match.team2.name }}</span>
+    </div>
+  </div>
+
+  <span class="date">{{match.start | date:'dd-MM-yyyy'}} {{ match.start | date:'HH:mm'}}</span>
+</div>
