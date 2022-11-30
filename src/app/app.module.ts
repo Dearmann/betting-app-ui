@@ -43,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user-list.component';
+import { MatchComponent } from './match/match.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user
     TeamFormComponent,
     MatchFormComponent,
     DialogConfirmDeleteComponent,
-    AdminUserListComponent
+    AdminUserListComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,
