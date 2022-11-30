@@ -10,14 +10,16 @@
 
   <div class="game-info">
     <img class="game-logo" *ngIf="games && events" [src]="mapEventToGame.get(match.eventId)?.logoUrl">
-    <span class="mat-title game-name" *ngIf="games && events && !mapEventToGame.get(match.eventId)?.logoUrl">{{mapEventToGame.get(match.eventId)?.name}}</span>
+    <span class="mat-title game-name" *ngIf="games && events && !mapEventToGame.get(match.eventId)?.logoUrl">
+      {{mapEventToGame.get(match.eventId)?.name}}
+    </span>
   </div>
   
   <div class="match">
 
     <div class="team" style="justify-content: right;">
       <span class="team-name" style="text-align: right;">{{ match.team1.name }}</span>
-      <div  class="team-logo-container">
+      <div class="team-logo-container">
         <img [src]="match.team1.logoUrl" alt="" class="team-logo">
       </div>
     </div>
