@@ -7,7 +7,7 @@
         [showHalfStars]="true"
         (starClickChange)="matchRated($event)"></star-rating>
       </mat-card-title>
-      <mat-card-subtitle>{{match.start | date:'dd-MM-yyyy'}} {{ match.start | date:'HH:mm'}}</mat-card-subtitle>
+      <mat-card-subtitle>{{match.start | date:'dd MMMM yyyy HH:mm'}}</mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content class="match">
