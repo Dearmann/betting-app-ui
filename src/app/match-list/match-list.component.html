@@ -4,7 +4,8 @@
   <mat-list-item
   *ngFor="let match of matches; index as i"
   matRipple
-  class="gradient-transition">
+  class="gradient-transition"
+  (click)="matchClicked(match)">
 
   <div class="game-info">
     <img class="game-logo" *ngIf="games && events" [src]="mapEventToGame.get(match.eventId)?.logoUrl">

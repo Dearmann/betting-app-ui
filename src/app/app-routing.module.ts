@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { EventListComponent } from './event-list/event-list.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { MatchListComponent } from './match-list/match-list.component';
+import { MatchComponent } from './match/match.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RankingComponent } from './ranking/ranking.component';
 
@@ -41,6 +42,11 @@ const routes: Routes = [
     path: 'events/:gameId',
     component: EventListComponent,
     title: 'Betting - Events'
+  },
+  {
+    path: 'match/:matchId',
+    component: MatchComponent,
+    title: 'Betting - Match'
   },
   {
     path: '**',
