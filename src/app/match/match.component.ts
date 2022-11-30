@@ -53,4 +53,8 @@ export class MatchComponent implements OnInit {
     console.log(event.rating);
   }
 
+  createComment() {
+
+  }
+
 }

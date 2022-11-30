@@ -45,6 +45,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user-list.component';
 import { MatchComponent } from './match/match.component';
 import { StarRatingModule } from 'angular-star-rating';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { StarRatingModule } from 'angular-star-rating';
     MatchFormComponent,
     DialogConfirmDeleteComponent,
     AdminUserListComponent,
-    MatchComponent
+    MatchComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,

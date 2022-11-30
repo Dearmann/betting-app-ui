@@ -1,0 +1,26 @@
+<mat-list *ngIf="comments">
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let comment of comments">
+
+    <div mat-line>{{comment.username}}</div>
+    <div mat-line>{{comment.createdDateTime}}</div>
+    <div mat-line>{{comment.message}}</div>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or delete comment">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editComment(comment.id)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="deleteComment(comment.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
