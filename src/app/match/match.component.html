@@ -3,7 +3,7 @@
 <mat-card *ngIf="match" class="match-card">
   <mat-card-header>
     <mat-card-title class="card-rating">
-      {{averageRating}}
+      {{averageRating | number:'1.1-1'}}
       <star-rating
       [rating]="(userRating) ? userRating.rating : averageRating"
       [showHalfStars]="true"

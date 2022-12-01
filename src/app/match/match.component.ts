@@ -99,27 +99,37 @@ export class MatchComponent implements OnInit {
   }
 
   matchRated(event: any) {
-    if (!this.userService.isLoggedIn) {
-      this.userService.keycloak.login();
+    if (!this.isUserAuthenticated()) {
       return;
     }
     // If user rating is present - PUT
     if (this.userRating !== undefined) {
-
+      this.editRating(event.rating);
     }
     // No user rating - POST
     else {
-      const ratingRequestDto = this.ratingService.createRequestDto(this.userId, this.matchId, event.rating);
-      this.ratingService.createRating(ratingRequestDto).subscribe({
-        error: response => this.snackbarService.showError(response, 'Failed to create rating'),
-        complete: () => this.getAllRatingsByMatchId(this.matchId)
-      });
+      this.createRating(event.rating);
     }
   }
 
+  createRating(ratingValue: number) {
+    const ratingRequestDto = this.ratingService.createRequestDto(this.userId, this.matchId, ratingValue);
+    this.ratingService.createRating(ratingRequestDto).subscribe({
+      error: response => this.snackbarService.showError(response, 'Failed to create rating'),
+      complete: () => this.getAllRatingsByMatchId(this.matchId)
+    });
+  }
+
+  editRating(ratingValue: number) {
+    const ratingRequestDto = this.ratingService.createRequestDto(this.userId, this.matchId, ratingValue);
+    this.ratingService.editRating(ratingRequestDto, this.userRating!.id).subscribe({
+      error: response => this.snackbarService.showError(response, 'Failed to edit rating'),
+      complete: () => this.getAllRatingsByMatchId(this.matchId)
+    });
+  }
+
   placeBet(predictedTeamId: number) {
-    if (!this.userService.isLoggedIn) {
-      this.userService.keycloak.login();
+    if (!this.isUserAuthenticated()) {
       return;
     }
     // If match finished - can't place a bet
@@ -128,21 +138,32 @@ export class MatchComponent implements OnInit {
     }
     // If user bet is present - PUT
     if (this.userBet !== undefined) {
-
+      this.editBet(predictedTeamId);
     }
     // No user bet - POST
     else {
-      const betRequestDto = this.betService.createRequestDto(this.userId, this.matchId, predictedTeamId);
-      this.betService.createBet(betRequestDto).subscribe({
-        error: response => this.snackbarService.showError(response, 'Failed to create bet'),
-        complete: () => this.getAllBetsByMatchId(this.matchId)
-      });
+      this.createBet(predictedTeamId);
     }
   }
 
+  createBet(predictedTeamId: number) {
+    const betRequestDto = this.betService.createRequestDto(this.userId, this.matchId, predictedTeamId);
+    this.betService.createBet(betRequestDto).subscribe({
+      error: response => this.snackbarService.showError(response, 'Failed to create bet'),
+      complete: () => this.getAllBetsByMatchId(this.matchId)
+    });
+  }
+
+  editBet(predictedTeamId: number) {
+    const betRequestDto = this.betService.createRequestDto(this.userId, this.matchId, predictedTeamId);
+    this.betService.editBet(betRequestDto, this.userBet!.id).subscribe({
+      error: response => this.snackbarService.showError(response, 'Failed to edit bet'),
+      complete: () => this.getAllBetsByMatchId(this.matchId)
+    });
+  }
+
   createComment() {
-    if (!this.userService.isLoggedIn) {
-      this.userService.keycloak.login();
+    if (!this.isUserAuthenticated()) {
       return;
     }
     const commentRequestDto = this.commentService.createRequestDto(this.userId, this.matchId, this.messageControl.value);
@@ -182,6 +203,14 @@ export class MatchComponent implements OnInit {
       next: response => this.match.comments = response,
       error: response => this.snackbarService.showError(response, 'Failed to retrieve comments')
     })
+  }
+
+  isUserAuthenticated(): boolean {
+    if (this.userService.isLoggedIn) {
+      return true;
+    }
+    this.userService.keycloak.login();
+    return false;
   }
 
 }
