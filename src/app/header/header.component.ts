@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { NavigationEnd, Router } from '@angular/router';
-import { KeycloakService } from 'keycloak-angular';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -20,14 +20,13 @@ export class HeaderComponent {
   @ViewChild('profile') profileButton: MatButton = {} as MatButton;
 
   constructor(
-    private readonly keycloak: KeycloakService,
-    private readonly router: Router
-  ) {
-  }
+    private readonly router: Router,
+    private readonly userService: UserService
+  ) { }
 
-  public async ngOnInit() {
-    this.isLoggedIn = await this.keycloak.isLoggedIn();
-    this.isAdmin = this.keycloak.isUserInRole("ADMIN");
+  ngOnInit(): void {
+    this.isLoggedIn = this.userService.isLoggedIn;
+    this.isAdmin = this.userService.isAdmin;
   }
 
   ngAfterViewInit() {
@@ -35,11 +34,11 @@ export class HeaderComponent {
   }
 
   public login() {
-    this.keycloak.login();
+    this.userService.keycloak.login();
   }
 
   public logout() {
-    this.keycloak.logout();
+    this.userService.keycloak.logout();
   }
 
   private grayOutButtonBasedOnActiveRoute() {

@@ -1,18 +1,51 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
+import { KeycloakProfile } from 'keycloak-js';
 import { Observable } from 'rxjs';
+import { Bet } from '../model/bet';
+import { Comment } from '../model/comment';
+import { Rating } from '../model/rating';
 import { User } from '../model/user';
 import { UserRequest } from '../model/user-requesty';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  public bets: Bet[] = [];
+  public comments: Comment[] = [];
+  public ratings: Rating[] = [];
+  public isLoggedIn: Boolean = false;
+  public isAdmin: Boolean = false;
+  public userProfile: KeycloakProfile | null = null;
+
   private readonly userUrl = "http://localhost:8080/users";
   private readonly keycloakUrl = "http://localhost:8080/keycloak";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private readonly snackbarService: SnackbarService,
+    public readonly keycloak: KeycloakService
+  ) { }
+
+  async loadUserData(): Promise<void> {
+    this.isLoggedIn = await this.keycloak.isLoggedIn();
+    if (this.isLoggedIn) {
+      this.userProfile = await this.keycloak.loadUserProfile();
+      this.isAdmin = this.keycloak.isUserInRole("ADMIN");
+      this.getUserInteractionsById(this.userProfile.id!).subscribe({
+        next: response => {
+          this.bets = response.bets;
+          this.comments = response.comments;
+          this.ratings = response.ratings;
+        },
+        error: response => this.snackbarService.showError(response, 'Failed to retrieve user interactions')
+      })
+    }
+  }
 
   getAllUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.userUrl);
