@@ -40,6 +40,6 @@
   <mat-divider></mat-divider>
   <mat-card-header class="comment-section">
     <mat-card-subtitle>Comments:</mat-card-subtitle>
-    <app-comment-list *ngIf="match" [comments]="match.comments"></app-comment-list>
+    <app-comment-list *ngIf="match" [matchId]="match.id"></app-comment-list>
   </mat-card-header>
 </mat-card>

@@ -16,11 +16,11 @@
       </mat-card-content>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editComment(comment.id)">
+        <button mat-menu-item (click)="editButtonClicked(comment.id)">
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button mat-menu-item (click)="deleteComment(comment.id)">
+        <button mat-menu-item (click)="deleteButtonClicked(comment.id)">
           <mat-icon>delete</mat-icon>
           <span>Delete</span>
         </button>
