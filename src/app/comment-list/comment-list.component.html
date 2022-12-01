@@ -6,7 +6,11 @@
         <mat-card-title>{{comment.username}}</mat-card-title>
         <mat-card-subtitle>{{comment.createdDateTime | date:'dd MMMM yyyy HH:mm:ss'}}</mat-card-subtitle>
 
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or delete comment">
+        <button
+          *ngIf="comment.userId === userId"
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Edit or delete comment">
           <mat-icon>more_vert</mat-icon>
         </button>
       </mat-card-header>

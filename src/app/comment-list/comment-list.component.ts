@@ -4,6 +4,7 @@ import { DialogConfirmDeleteComponent } from '../admin-panel/dialog-confirm-dele
 import { Comment } from "../model/comment";
 import { CommentService } from '../services/comment.service';
 import { SnackbarService } from '../services/snackbar.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -14,12 +15,16 @@ export class CommentListComponent implements OnInit {
 
   @Input() matchId: number = 0;
   comments!: Comment[];
+  userId: string;
 
   constructor(
     private readonly commentService: CommentService,
     private readonly dialog: MatDialog,
-    private readonly snackbarService: SnackbarService
-    ) { }
+    private readonly snackbarService: SnackbarService,
+    private readonly userService: UserService
+    ) {
+      this.userId = this.userService.userProfile?.id!;
+    }
 
   ngOnInit(): void {
     this.getAllCommentsByMatchId(this.matchId);
