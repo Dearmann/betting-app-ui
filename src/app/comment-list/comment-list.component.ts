@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogConfirmDeleteComponent } from '../admin-panel/dialog-confirm-delete/dialog-confirm-delete.component';
 import { Comment } from "../model/comment";
@@ -14,8 +15,11 @@ import { UserService } from '../services/user.service';
 export class CommentListComponent implements OnInit {
 
   @Input() matchId: number = 0;
-  comments!: Comment[];
+  @Input() comments!: Comment[];
   userId: string;
+  editingCommentId: number = 0;
+
+  messageControl: FormControl = new FormControl('');
 
   constructor(
     private readonly commentService: CommentService,
@@ -27,7 +31,7 @@ export class CommentListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getAllCommentsByMatchId(this.matchId);
+    // this.getAllCommentsByMatchId(this.matchId);
   }
 
   getAllCommentsByMatchId(matchId: number) {
@@ -37,8 +41,25 @@ export class CommentListComponent implements OnInit {
     })
   }
 
-  editButtonClicked(commentId: number) {
-    console.log(commentId);
+  editButtonClicked(comment: Comment) {
+    this.messageControl.setValue(comment.message);
+    this.editingCommentId = comment.id;
+  }
+
+  cancelEditingComment() {
+    this.editingCommentId = 0;
+  }
+
+  editComment() {
+    const commentRequestDto = this.commentService.createRequestDto(this.userId, this.matchId, this.messageControl.value);
+    this.commentService.editComment(commentRequestDto, this.editingCommentId).subscribe({
+      error: response => this.snackbarService.showError(response, 'Failed to edit comment'),
+      complete: () => {
+        this.snackbarService.showSuccess('Comment edited successfully');
+        this.editingCommentId = 0;
+        this.getAllCommentsByMatchId(this.matchId);
+      }
+    });
   }
 
   deleteButtonClicked(commentId: number) {

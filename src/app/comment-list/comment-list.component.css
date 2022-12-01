@@ -11,3 +11,8 @@
   padding: 0 16px;
   margin-bottom: 0;
 }
+
+.message-field {
+  width: 100%;
+  display: block;
+}

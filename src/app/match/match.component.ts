@@ -35,13 +35,13 @@ export class MatchComponent implements OnInit {
     private readonly userService: UserService,
     private readonly ratingService: RatingService,
     private readonly commentService: CommentService
-    ) {
-      this.userId = this.userService.userProfile?.id!;
-      this.matchId = parseInt(this.route.snapshot.paramMap.get('matchId') || "");
-      if (!this.matchId) {
-        router.navigateByUrl("");
-      }
+  ) {
+    this.userId = this.userService.userProfile?.id!;
+    this.matchId = parseInt(this.route.snapshot.paramMap.get('matchId') || "");
+    if (!this.matchId) {
+      router.navigateByUrl("");
     }
+  }
 
   ngOnInit(): void {
     this.getMatchWithInteractionsById(this.matchId);
@@ -77,11 +77,21 @@ export class MatchComponent implements OnInit {
     console.log(event.rating);
   }
 
+  getAllCommentsByMatchId(matchId: number) {
+    this.commentService.getAllCommentsByMatchId(matchId).subscribe({
+      next: response => this.match.comments = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve comments')
+    })
+  }
+
   createComment() {
     const commentRequestDto = this.commentService.createRequestDto(this.userId, this.matchId, this.messageControl.value);
     this.commentService.createComment(commentRequestDto).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to create comment'),
-      complete: () => this.snackbarService.showSuccess('Comment created successfully')
+      complete: () => {
+        this.snackbarService.showSuccess('Comment created successfully');
+        this.getAllCommentsByMatchId(this.matchId);
+      }
     });
   }
 
