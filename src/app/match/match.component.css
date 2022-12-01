@@ -39,6 +39,10 @@
   opacity: 0.45;
 }
 
+.team-bet-placed {
+  background-color: lightgray;
+}
+
 .pick-percentage {
   display: block;
   color: rgba(0, 0, 0, .30);

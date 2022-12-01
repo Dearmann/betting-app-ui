@@ -55,7 +55,6 @@ export class CommentListComponent implements OnInit {
     this.commentService.editComment(commentRequestDto, this.editingCommentId).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to edit comment'),
       complete: () => {
-        this.snackbarService.showSuccess('Comment edited successfully');
         this.editingCommentId = 0;
         this.getAllCommentsByMatchId(this.matchId);
       }
@@ -76,10 +75,7 @@ export class CommentListComponent implements OnInit {
   deleteComment(commentId: number) {
     this.commentService.deleteComment(commentId).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to delete comment'),
-      complete: () => {
-        this.getAllCommentsByMatchId(this.matchId);
-        this.snackbarService.showSuccess('Comment deleted successfully');
-      }
+      complete: () => this.getAllCommentsByMatchId(this.matchId)
     })
   }
 
