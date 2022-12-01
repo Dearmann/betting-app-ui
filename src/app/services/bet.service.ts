@@ -21,12 +21,12 @@ export class BetService {
     return this.httpClient.get<Bet>(this.backendUrl + "/" + betId);
   }
 
-  getAllBetsByUserId(userId: string): Observable<Bet> {
-    return this.httpClient.get<Bet>(this.backendUrl + "/by-userid/" + userId);
+  getAllBetsByUserId(userId: string): Observable<Bet[]> {
+    return this.httpClient.get<Bet[]>(this.backendUrl + "/by-userid/" + userId);
   }
 
-  getAllBetsByMatchId(matchId: number): Observable<Bet> {
-    return this.httpClient.get<Bet>(this.backendUrl + "/by-matchid/" + matchId);
+  getAllBetsByMatchId(matchId: number): Observable<Bet[]> {
+    return this.httpClient.get<Bet[]>(this.backendUrl + "/by-matchid/" + matchId);
   }
 
   createBet(betRequest: BetRequest): Observable<Bet> {

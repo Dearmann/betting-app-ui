@@ -21,12 +21,12 @@ export class RatingService {
     return this.httpClient.get<Rating>(this.backendUrl + "/" + ratingId);
   }
 
-  getAllRatingsByUserId(userId: string): Observable<Rating> {
-    return this.httpClient.get<Rating>(this.backendUrl + "/by-userid/" + userId);
+  getAllRatingsByUserId(userId: string): Observable<Rating[]> {
+    return this.httpClient.get<Rating[]>(this.backendUrl + "/by-userid/" + userId);
   }
 
-  getAllRatingsByMatchId(matchId: number): Observable<Rating> {
-    return this.httpClient.get<Rating>(this.backendUrl + "/by-matchid/" + matchId);
+  getAllRatingsByMatchId(matchId: number): Observable<Rating[]> {
+    return this.httpClient.get<Rating[]>(this.backendUrl + "/by-matchid/" + matchId);
   }
 
   createRating(ratingRequest: RatingRequest): Observable<Rating> {

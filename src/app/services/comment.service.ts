@@ -21,12 +21,12 @@ export class CommentService {
     return this.httpClient.get<Comment>(this.backendUrl + "/" + commentId);
   }
 
-  getAllCommentsByUserId(userId: string): Observable<Comment> {
-    return this.httpClient.get<Comment>(this.backendUrl + "/by-userid/" + userId);
+  getAllCommentsByUserId(userId: string): Observable<Comment[]> {
+    return this.httpClient.get<Comment[]>(this.backendUrl + "/by-userid/" + userId);
   }
 
-  getAllCommentsByMatchId(matchId: number): Observable<Comment> {
-    return this.httpClient.get<Comment>(this.backendUrl + "/by-matchid/" + matchId);
+  getAllCommentsByMatchId(matchId: number): Observable<Comment[]> {
+    return this.httpClient.get<Comment[]>(this.backendUrl + "/by-matchid/" + matchId);
   }
 
   createComment(commentRequest: CommentRequest): Observable<Comment> {
