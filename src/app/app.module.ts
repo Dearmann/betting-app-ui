@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { GameListComponent } from './game-list/game-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { keycloakInit } from './auth/keycloak-init.factory';
+import { initializeAppFactory } from './init/app-init.factory';
 import { ProfileComponent } from './profile/profile.component';
 import { ConfigService } from './config/config.service';
 import { MatCardModule } from '@angular/material/card';
@@ -43,6 +43,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user-list.component';
+import { MatchComponent } from './match/match.component';
+import { StarRatingModule } from 'angular-star-rating';
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,9 @@ import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user
     TeamFormComponent,
     MatchFormComponent,
     DialogConfirmDeleteComponent,
-    AdminUserListComponent
+    AdminUserListComponent,
+    MatchComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
@@ -90,15 +96,16 @@ import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
     ConfigService,
     {
       provide: APP_INITIALIZER,
-      useFactory: keycloakInit,
+      useFactory: initializeAppFactory,
       multi: true,
-      deps: [KeycloakService, ConfigService],
+      deps: [KeycloakService, ConfigService, UserService],
     }
   ],
   bootstrap: [AppComponent]

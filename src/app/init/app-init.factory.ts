@@ -1,8 +1,9 @@
 import { KeycloakService } from "keycloak-angular";
 import { from, switchMap } from "rxjs";
 import { ConfigService } from "../config/config.service";
+import { UserService } from "../services/user.service";
 
-export function keycloakInit(keycloak: KeycloakService, configService: ConfigService) {
+export function initializeAppFactory(keycloak: KeycloakService, configService: ConfigService, userService: UserService) {
 
   return () =>
     configService.getConfig()
@@ -22,4 +23,5 @@ export function keycloakInit(keycloak: KeycloakService, configService: ConfigSer
           }))
         })
       ).toPromise()
+      .then(() => userService.loadUserData());
 }

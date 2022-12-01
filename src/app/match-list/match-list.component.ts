@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Event } from '../model/event';
 import { Game } from '../model/game';
 import { Match } from '../model/match';
@@ -23,7 +24,8 @@ export class MatchListComponent implements OnInit {
     private readonly matchService: MatchService,
     private readonly snackbarService: SnackbarService,
     private readonly gameService: GameService,
-    private readonly eventService: EventService
+    private readonly eventService: EventService,
+    private readonly router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +62,10 @@ export class MatchListComponent implements OnInit {
 
   fillEventToGameMap() {
     this.events.forEach(event => this.mapEventToGame.set(event.id, this.games.find(game => game.id === event.gameId)!));
+  }
+
+  matchClicked(match: Match) {
+    this.router.navigateByUrl("/match/" + match.id);
   }
 
 }

@@ -1,0 +1,69 @@
+<mat-progress-bar *ngIf="!match" mode="indeterminate"></mat-progress-bar>
+
+<mat-card *ngIf="match" class="match-card">
+  <mat-card-header>
+    <mat-card-title class="card-rating">
+      {{averageRating | number:'1.1-1'}}
+      <star-rating
+      [rating]="(userRating) ? userRating.rating : averageRating"
+      [showHalfStars]="true"
+      (starClickChange)="matchRated($event)"
+      [hoverEnabled]="true"></star-rating>
+    </mat-card-title>
+    <mat-card-subtitle>{{match.start | date:'dd MMMM yyyy HH:mm'}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="match">
+
+    <div class="team" style="justify-content: right;"
+    [ngClass]="{
+    'team-lost': match.winner === 'TEAM_2',
+    'team-bet-placed-tbd': userBet?.predictedTeamId === match.team1.id && match.winner === 'TBD',
+    'team-bet-placed-correct': userBet?.predictedTeamId === match.team1.id && match.winner === 'TEAM_1',
+    'team-bet-placed-wrong': userBet?.predictedTeamId === match.team1.id && match.winner === 'TEAM_2'
+    }"
+    (click)="placeBet(match.team1.id)"
+    matRipple>
+      <div class="team-name" style="text-align: right;">
+        <span>{{match.team1.name}}</span>
+        <span class="pick-percentage">Picked: {{betPercentageTeam1 | percent}}</span>
+      </div>
+      <img class="team-logo" [src]="match.team1.logoUrl" alt="">
+    </div>
+
+    <span *ngIf="match.winner === 'TBD'" class="score">0 : 0</span>
+    <span *ngIf="match.winner === 'TEAM_1'" class="score">1 : 0</span>
+    <span *ngIf="match.winner === 'TEAM_2'" class="score">0 : 1</span>
+
+    <div class="team" style="justify-content: left;"
+    [ngClass]="{
+      'team-lost': match.winner === 'TEAM_1',
+      'team-bet-placed-tbd': userBet?.predictedTeamId === match.team2.id && match.winner === 'TBD',
+      'team-bet-placed-correct': userBet?.predictedTeamId === match.team2.id && match.winner === 'TEAM_2',
+      'team-bet-placed-wrong': userBet?.predictedTeamId === match.team2.id && match.winner === 'TEAM_1'
+    }"
+    (click)="placeBet(match.team2.id)"
+    matRipple>
+      <img class="team-logo" [src]="match.team2.logoUrl" alt="">
+      <div class="team-name" style="text-align: left;">
+        <span>{{match.team2.name}}</span>
+        <span class="pick-percentage">Picked: {{betPercentageTeam2 | percent}}</span>
+      </div>
+    </div>
+
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-header class="comment-section">
+    <mat-card-subtitle>Comments:</mat-card-subtitle>
+    <app-comment-list *ngIf="match" [comments]="match.comments" [matchId]="match.id"></app-comment-list>
+
+    <div class="create-comment">
+      <mat-form-field class="message-field">
+        <mat-label>Message</mat-label>
+        <textarea [formControl]="messageControl" #message maxlength="500" matInput cdkTextareaAutosize></textarea>
+        <mat-hint align="end">{{message.value.length}}/500</mat-hint>
+      </mat-form-field>
+      <button [disabled]="!message.value.length" (click)="createComment()" type="submit" mat-raised-button color="primary">Comment</button>
+    </div>
+  </mat-card-header>
+</mat-card>

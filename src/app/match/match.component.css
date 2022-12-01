@@ -1,0 +1,84 @@
+.match-card {
+  margin: 60px auto;
+  min-width: 750px;
+  max-width: 950px;
+}
+
+.card-rating {
+  display: inline-flex;
+  font-size: x-large;
+  font-weight: 300;
+}
+
+.match {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: x-large;
+}
+
+.team {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.team-logo {
+  height: 100px;
+}
+
+.team-name {
+  width: 130px;
+  margin: 0 30px;
+  line-height: normal;
+}
+
+.team-lost {
+  opacity: 0.60;
+}
+
+.team-bet-placed-tbd {
+  background: rgb(148, 187, 233);
+  background: radial-gradient(circle, rgba(148, 187, 233, 0.3029586834733894) 0%, rgba(238, 174, 202, 0) 100%);
+}
+
+.team-bet-placed-correct {
+  background: rgb(155, 233, 148);
+  background: radial-gradient(circle, rgba(155, 233, 148, 0.3029586834733894) 0%, rgba(238, 174, 202, 0) 100%);
+}
+
+.team-bet-placed-wrong {
+  background: rgb(207, 25, 25);
+  background: radial-gradient(circle, rgb(207 25 25 / 35%) 0%, rgba(238, 174, 202, 0) 100%);
+}
+
+.pick-percentage {
+  display: block;
+  color: rgba(0, 0, 0, .30);
+  font-size: large;
+  margin-top: 3px;
+}
+
+.score {
+  margin: 70px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: xx-large;
+}
+
+.comment-section {
+  padding-top: 16px;
+  display: block;
+}
+
+.create-comment {
+  padding: 0 64px;
+  margin: 50px 0 40px 0;
+}
+
+.message-field {
+  width: 400px;
+  display: block;
+}

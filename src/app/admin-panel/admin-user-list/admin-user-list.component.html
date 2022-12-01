@@ -30,7 +30,7 @@
     </div>
     <div mat-line class="entity-field-container">
       <span class="entity-field-name">Created at: </span>
-      <span>{{user.createdTimestamp | date}}</span>
+      <span>{{user.createdTimestamp | date:'dd-MM-yyyy HH:mm:ss'}}</span>
     </div>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Edit or Delete admin menu">
       <mat-icon>more_vert</mat-icon>
