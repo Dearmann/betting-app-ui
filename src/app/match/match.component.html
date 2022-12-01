@@ -16,7 +16,12 @@
   <mat-card-content class="match">
 
     <div class="team" style="justify-content: right;"
-    [ngClass]="{ 'team-lost': match.winner === 'TEAM_2', 'team-bet-placed': userBet?.predictedTeamId === match.team1.id }"
+    [ngClass]="{
+    'team-lost': match.winner === 'TEAM_2',
+    'team-bet-placed-tbd': userBet?.predictedTeamId === match.team1.id && match.winner === 'TBD',
+    'team-bet-placed-correct': userBet?.predictedTeamId === match.team1.id && match.winner === 'TEAM_1',
+    'team-bet-placed-wrong': userBet?.predictedTeamId === match.team1.id && match.winner === 'TEAM_2'
+    }"
     (click)="placeBet(match.team1.id)"
     matRipple>
       <div class="team-name" style="text-align: right;">
@@ -31,7 +36,12 @@
     <span *ngIf="match.winner === 'TEAM_2'" class="score">0 : 1</span>
 
     <div class="team" style="justify-content: left;"
-    [ngClass]="{ 'team-lost': match.winner === 'TEAM_1', 'team-bet-placed': userBet?.predictedTeamId === match.team2.id }"
+    [ngClass]="{
+      'team-lost': match.winner === 'TEAM_1',
+      'team-bet-placed-tbd': userBet?.predictedTeamId === match.team2.id && match.winner === 'TBD',
+      'team-bet-placed-correct': userBet?.predictedTeamId === match.team2.id && match.winner === 'TEAM_2',
+      'team-bet-placed-wrong': userBet?.predictedTeamId === match.team2.id && match.winner === 'TEAM_1'
+    }"
     (click)="placeBet(match.team2.id)"
     matRipple>
       <img class="team-logo" [src]="match.team2.logoUrl" alt="">

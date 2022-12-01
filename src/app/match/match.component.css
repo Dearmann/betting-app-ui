@@ -36,11 +36,22 @@
 }
 
 .team-lost {
-  opacity: 0.45;
+  opacity: 0.60;
 }
 
-.team-bet-placed {
-  background-color: lightgray;
+.team-bet-placed-tbd {
+  background: rgb(148, 187, 233);
+  background: radial-gradient(circle, rgba(148, 187, 233, 0.3029586834733894) 0%, rgba(238, 174, 202, 0) 100%);
+}
+
+.team-bet-placed-correct {
+  background: rgb(155, 233, 148);
+  background: radial-gradient(circle, rgba(155, 233, 148, 0.3029586834733894) 0%, rgba(238, 174, 202, 0) 100%);
+}
+
+.team-bet-placed-wrong {
+  background: rgb(207, 25, 25);
+  background: radial-gradient(circle, rgb(207 25 25 / 35%) 0%, rgba(238, 174, 202, 0) 100%);
 }
 
 .pick-percentage {
