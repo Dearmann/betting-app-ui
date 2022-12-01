@@ -57,3 +57,13 @@
   padding-top: 16px;
   display: block;
 }
+
+.create-comment {
+  padding: 0 64px;
+  margin: 50px 0 40px 0;
+}
+
+.message-field {
+  width: 400px;
+  display: block;
+}
