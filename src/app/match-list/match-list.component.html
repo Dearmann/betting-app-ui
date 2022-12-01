@@ -17,7 +17,8 @@
   
   <div class="match">
 
-    <div class="team" style="justify-content: right;">
+    <div class="team" style="justify-content: right;"
+    [ngClass]="{'team-lost': match.winner === 'TEAM_2'}">
       <span class="team-name" style="text-align: right;">{{ match.team1.name }}</span>
       <div class="team-logo-container">
         <img [src]="match.team1.logoUrl" alt="" class="team-logo">
@@ -28,7 +29,8 @@
     <span *ngIf="match.winner === 'TEAM_1'" class="score">1 : 0</span>
     <span *ngIf="match.winner === 'TEAM_2'" class="score">0 : 1</span>
 
-    <div class="team" style="justify-content: left;">
+    <div class="team" style="justify-content: left;"
+    [ngClass]="{'team-lost': match.winner === 'TEAM_1'}">
       <div class="team-logo-container">
         <img [src]="match.team2.logoUrl" alt="" class="team-logo">
       </div>

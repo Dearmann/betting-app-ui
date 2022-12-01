@@ -35,6 +35,10 @@
   line-height: normal;
 }
 
+.team-lost {
+  opacity: 0.45;
+}
+
 .pick-percentage {
   display: block;
   color: rgba(0, 0, 0, .30);

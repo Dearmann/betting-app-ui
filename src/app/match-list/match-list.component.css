@@ -29,6 +29,10 @@
   width: 100px;
 }
 
+.team-lost {
+  opacity: 0.45;
+}
+
 .score {
   width: 100px;
   text-align: center;
