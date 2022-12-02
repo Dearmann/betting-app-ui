@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Set match result</h1>
+<div mat-dialog-content>
+  Choose the team that won
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.team1.id" color="warn">{{ data.team1.name + ' (Left)' }}</button>
+  <button mat-button [mat-dialog-close]="data.team2.id" color="warn">{{ data.team2.name + ' (Right)' }}</button>
+</div>

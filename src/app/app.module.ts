@@ -47,6 +47,7 @@ import { MatchComponent } from './match/match.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { UserService } from './services/user.service';
+import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-result.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { UserService } from './services/user.service';
     DialogConfirmDeleteComponent,
     AdminUserListComponent,
     MatchComponent,
-    CommentListComponent
+    CommentListComponent,
+    DialogSetResultComponent
   ],
   imports: [
     BrowserModule,

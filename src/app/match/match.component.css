@@ -4,6 +4,13 @@
   max-width: 950px;
 }
 
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .card-rating {
   display: inline-flex;
   font-size: x-large;
