@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bet } from '../model/bet';
 import { Match } from '../model/match';
@@ -11,6 +12,7 @@ import { MatchService } from '../services/match.service';
 import { RatingService } from '../services/rating.service';
 import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
+import { DialogSetResultComponent } from './dialog-set-result/dialog-set-result.component';
 
 @Component({
   selector: 'app-match',
@@ -30,6 +32,7 @@ export class MatchComponent implements OnInit {
   messageControl: FormControl = new FormControl('');
   userBet: Bet | undefined;
   userRating: Rating | undefined;
+  isAdmin: boolean = false;
 
   constructor(
     private readonly matchService: MatchService,
@@ -39,12 +42,14 @@ export class MatchComponent implements OnInit {
     private readonly userService: UserService,
     private readonly ratingService: RatingService,
     private readonly commentService: CommentService,
-    private readonly betService: BetService
+    private readonly betService: BetService,
+    private readonly dialog: MatDialog
   ) {
     this.userId = this.userService.userProfile?.id!;
+    this.isAdmin = this.userService.isAdmin;
     this.matchId = parseInt(this.route.snapshot.paramMap.get('matchId') || "");
     if (!this.matchId) {
-      router.navigateByUrl("/games");
+      this.router.navigateByUrl("/games");
     }
   }
 
@@ -211,6 +216,24 @@ export class MatchComponent implements OnInit {
     }
     this.userService.keycloak.login();
     return false;
+  }
+
+  setResultButtonClicked() {
+    let resultDialog = this.dialog.open(DialogSetResultComponent, {
+      data: { team1: this.match.team1, team2: this.match.team2 }
+    });
+    resultDialog.afterClosed().subscribe(winnerTeamId => {
+      if (winnerTeamId) {
+        this.setMatchResult(winnerTeamId);
+      }
+    });
+  }
+
+  setMatchResult(winnerTeamId: number) {
+    this.matchService.setMatchResult(this.matchId, winnerTeamId).subscribe({
+      next: response => this.match = response,
+      error: response => this.snackbarService.showError(response, 'Error while setting match result')
+    });
   }
 
 }

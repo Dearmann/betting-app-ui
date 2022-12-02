@@ -18,8 +18,8 @@ export class UserService {
   public bets: Bet[] = [];
   public comments: Comment[] = [];
   public ratings: Rating[] = [];
-  public isLoggedIn: Boolean = false;
-  public isAdmin: Boolean = false;
+  public isLoggedIn: boolean = false;
+  public isAdmin: boolean = false;
   public userProfile: KeycloakProfile | null = null;
 
   private readonly userUrl = "http://localhost:8080/users";
