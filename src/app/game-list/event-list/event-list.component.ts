@@ -41,7 +41,8 @@ export class EventListComponent implements OnInit {
   getEventsByGameId(gameId: number) {
     this.eventService.getEventsByGameId(gameId).subscribe({
       next: response => this.events = response,
-      error: response => this.snackbarService.showError(response, 'Failed to retrieve events')
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve events'),
+      complete: () => this.events.sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime())
     });
   }
 
@@ -62,7 +63,8 @@ export class EventListComponent implements OnInit {
   getAllEvents() {
     this.eventService.getAllEvents().subscribe({
       next: response => this.events = response,
-      error: response => this.snackbarService.showError(response, 'Failed to retrieve events')
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve events'),
+      complete: () => this.events.sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime())
     })
   }
 

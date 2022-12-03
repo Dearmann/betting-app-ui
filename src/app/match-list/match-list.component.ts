@@ -33,12 +33,16 @@ export class MatchListComponent implements OnInit {
       this.getAllMatches();
       this.getAllEvents();
     }
+    if (this.matches) {
+      this.matches.sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime());
+    }
   }
 
   getAllMatches() {
     this.matchService.getAllMatches().subscribe({
       next: response => this.matches = response,
-      error: response => this.snackbarService.showError(response, 'Failed to retrieve matches')
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve matches'),
+      complete: () => this.matches.sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime())
     })
   }
 
