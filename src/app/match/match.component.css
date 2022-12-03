@@ -17,6 +17,10 @@
   font-weight: 300;
 }
 
+star-rating {
+  cursor: pointer;
+}
+
 .match {
   margin: 40px 0;
   display: flex;
@@ -30,6 +34,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
 }
 
 .team-logo {

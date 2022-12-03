@@ -76,4 +76,5 @@
 
 .gradient-transition:hover {
   background-position: 100px;
+  cursor: pointer;
 }
