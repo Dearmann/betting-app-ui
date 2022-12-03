@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Bet } from '../model/bet';
 import { User } from '../model/user';
 import { BetService } from '../services/bet.service';
@@ -19,7 +20,8 @@ export class RankingComponent implements OnInit {
   constructor(
     private readonly userService: UserService,
     private readonly betService: BetService,
-    private readonly snackbarService: SnackbarService
+    private readonly snackbarService: SnackbarService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -60,7 +62,7 @@ export class RankingComponent implements OnInit {
   }
 
   userClicked(userId: string) {
-    console.log(userId);
+    this.router.navigateByUrl('/profile/' + userId);
   }
 }
 
