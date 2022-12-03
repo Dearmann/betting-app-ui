@@ -1,10 +1,5 @@
-.header {
-  font-weight: bolder;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.match-card {
+  margin: 60px auto;
+  min-width: 750px;
+  max-width: 950px;
 }

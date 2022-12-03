@@ -47,6 +47,8 @@ import { StarRatingModule } from 'angular-star-rating';
 import { CommentListComponent } from './match/comment-list/comment-list.component';
 import { UserService } from './services/user.service';
 import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-result.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ProfileDetailsComponent } from './profile/profile-details/profile-details.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,8 @@ import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-r
     AdminUserListComponent,
     MatchComponent,
     CommentListComponent,
-    DialogSetResultComponent
+    DialogSetResultComponent,
+    ProfileDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +100,8 @@ import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-r
     FormsModule,
     MatInputModule,
     MatSnackBarModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    MatTabsModule
   ],
   providers: [
     ConfigService,

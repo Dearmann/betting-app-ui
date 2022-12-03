@@ -1,38 +1,21 @@
-<mat-list *ngIf="user">
+<mat-progress-bar *ngIf="!user" mode="indeterminate"></mat-progress-bar>
+
+<mat-card *ngIf="user" class="match-card">
+
+  <mat-card-header class="match-header">
+    <mat-card-title>{{ user.username ? user.username : '-' }}</mat-card-title>
+    <mat-card-subtitle style="margin-bottom: 10px;">User profile</mat-card-subtitle>
+  </mat-card-header>
   <mat-divider></mat-divider>
-  <mat-list-item class="gradient-transition">
-    <div class="row">
-      <span class="header">Username</span>
-      <span>{{ user.username ? user.username : '-' }}</span>
-    </div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item class="gradient-transition">
-    <div class="row">
-      <span class="header">First name</span>
-      <span>{{ user.firstName ? user.firstName : '-' }}</span>
-    </div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item class="gradient-transition">
-    <div class="row">
-      <span class="header">Last name</span>
-      <span>{{ user.lastName ? user.lastName : '-' }}</span>
-    </div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item class="gradient-transition">
-    <div class="row">
-      <span class="header">E-mail</span>
-      <span>{{ user.email ? user.email : '-' }}</span>
-    </div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item class="gradient-transition">
-    <div class="row">
-      <span class="header">Created at</span>
-      <span>{{ user.createdTimestamp ? (user.createdTimestamp | date:'yyyy-MM-dd HH:mm:ss') : '-' }}</span>
-    </div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
+
+  <mat-card-content>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Details">
+        <app-profile-details [user]="user"></app-profile-details>
+      </mat-tab>
+      <mat-tab label="Bets"> Bets </mat-tab>
+      <mat-tab label="Comments"> Comments </mat-tab>
+      <mat-tab label="Ratings"> Ratings </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
