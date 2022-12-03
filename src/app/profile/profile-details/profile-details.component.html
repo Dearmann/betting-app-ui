@@ -28,8 +28,12 @@
       <span>{{ user.createdTimestamp ? (user.createdTimestamp | date:'yyyy-MM-dd HH:mm:ss') : '-' }}</span>
     </div>
   </mat-list-item>
-  <button *ngIf="loggedInUserId === user.id" mat-raised-button color="primary" (click)="editButtonClicked()" style="margin-left: 15px;">Edit</button>
-  <button *ngIf="loggedInUserId === user.id" mat-raised-button color="warn" (click)="deleteButtonClicked()" style="margin-left: 15px;">Delete</button>
+  <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="primary"
+    (click)="editButtonClicked()">Edit</button>
+  <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="primary"
+    (click)="sendResetPasswordEmail()">Reset password</button>
+  <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="warn"
+    (click)="deleteButtonClicked()">Delete</button>
 </mat-list>
 
 <form [formGroup]="userForm" *ngIf="editingProfile">

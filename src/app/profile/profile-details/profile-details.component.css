@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+.action-button {
+  margin: 15px 0 0 15px;
+}
+
 form {
   display: flex;
   flex-direction: column;

@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileDetailsComponent implements OnInit {
 
   @Input() user: User | null | undefined;
-  loggedInUserId: string;
+  loggedInUserId: string = '';
   editingProfile: boolean = false;
 
   userForm: FormGroup;
@@ -29,10 +29,10 @@ export class ProfileDetailsComponent implements OnInit {
       firstName: new FormControl(''),
       lastName: new FormControl('')
     });
-    this.loggedInUserId = userService.user?.id!;
   }
 
   ngOnInit(): void {
+    setTimeout(() => this.loggedInUserId = this.userService.user?.id!, 10);
   }
 
   getUserWithInteractionsById(userId: string) {
@@ -68,6 +68,13 @@ export class ProfileDetailsComponent implements OnInit {
         this.getUserWithInteractionsById(this.user!.id);
       }
     });
+  }
+
+  sendResetPasswordEmail() {
+    this.userService.sendResetPassword(this.user!.id).subscribe({
+      error: response => this.snackbarService.showError(response, 'Error sending password reset email'),
+      complete: () => this.snackbarService.showSuccess('Password reset email has been sent successfully')
+    })
   }
 
   deleteButtonClicked() {
