@@ -13,7 +13,9 @@
       <mat-tab label="Details">
         <app-profile-details [user]="user"></app-profile-details>
       </mat-tab>
-      <mat-tab label="Bets"> Bets </mat-tab>
+      <mat-tab label="Bets">
+        <app-profile-bets [bets]="user.bets" [matches]="matches!"></app-profile-bets>
+      </mat-tab>
       <mat-tab label="Comments"> Comments </mat-tab>
       <mat-tab label="Ratings"> Ratings </mat-tab>
     </mat-tab-group>

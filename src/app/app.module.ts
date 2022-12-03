@@ -50,6 +50,7 @@ import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-r
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProfileDetailsComponent } from './profile/profile-details/profile-details.component';
 import { DialogPasswordResetComponent } from './profile/dialog-password-reset/dialog-password-reset.component';
+import { ProfileBetsComponent } from './profile/profile-bets/profile-bets.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { DialogPasswordResetComponent } from './profile/dialog-password-reset/di
     CommentListComponent,
     DialogSetResultComponent,
     ProfileDetailsComponent,
-    DialogPasswordResetComponent
+    DialogPasswordResetComponent,
+    ProfileBetsComponent
   ],
   imports: [
     BrowserModule,

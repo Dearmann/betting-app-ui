@@ -1,0 +1,28 @@
+<mat-list *ngIf="bets && bets.length">
+  <mat-list-item class="gradient-transition-header">
+    <div class="flex-container">
+      <span class="column-match header">Match</span>
+      <span class="column header">Prediction</span>
+      <span class="column header">Match finished</span>
+      <span class="column header">Correct prediction</span>
+    </div>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+  <mat-list-item
+  *ngFor="let bet of bets"
+  matRipple
+  class="gradient-transition"
+  [routerLink]="'/match/' + bet.matchId">
+
+    <div class="flex-container">
+      <span class="column-match">{{ matchMap.get(bet.id)?.team1?.name }} vs {{ matchMap.get(bet.id)?.team2?.name }}</span>
+      <span class="column">{{ (bet.predictedTeamId === matchMap.get(bet.id)?.team1?.id) ? matchMap.get(bet.id)?.team1?.name : matchMap.get(bet.id)?.team2?.name }}</span>
+      <span class="column">{{ bet.matchFinished ? 'Yes' : 'No' }}</span>
+      <span *ngIf="bet.matchFinished" class="column">{{ bet.correctPrediction ? 'Yes' : 'No' }}</span>
+      <span *ngIf="!bet.matchFinished" class="column">-</span>
+    </div>
+
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
