@@ -33,6 +33,12 @@ const routes: Routes = [
     title: 'Betting - Ranking'
   },
   {
+    path: 'profile',
+    component: ProfileComponent,
+    title: 'Betting - Profile',
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'profile/:userId',
     component: ProfileComponent,
     title: 'Betting - Profile'

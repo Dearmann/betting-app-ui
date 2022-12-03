@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycloakProfile } from 'keycloak-js';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../model/user';
+import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,12 +11,34 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  public userProfile: KeycloakProfile | null = null;
+  userId: string;
+  user: User | null | undefined;
 
-  constructor(private readonly userService: UserService) { }
+  constructor(
+    private readonly userService: UserService,
+    private readonly route: ActivatedRoute,
+    private readonly snackbarService: SnackbarService,
+  ) {
+    this.userId = this.route.snapshot.paramMap.get('userId') || '';
+  }
 
   ngOnInit(): void {
-    this.userProfile = this.userService.userProfile;
+    if (this.userId) {
+      this.getUserWithInteractionsById(this.userId);
+    }
+    else if (!this.userService.user && this.userService.isLoggedIn) {
+      this.getUserWithInteractionsById(this.userService.userProfile?.id!);
+    }
+    else {
+      this.user = this.userService.user!;
+    }
+  }
+
+  getUserWithInteractionsById(userId: string) {
+    this.userService.getUserWithInteractionsById(userId).subscribe({
+      next: response => this.user = response,
+      error: response => this.snackbarService.showError(response, 'Failed to retrieve user with interactions')
+    })
   }
 
 }

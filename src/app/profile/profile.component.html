@@ -1,25 +1,38 @@
-<ng-container *ngIf="userProfile">
-  <h2>User information</h2>
-  <table>
-    <tr *ngIf="userProfile.username">
-      <th scope="row">Username</th>
-      <td>{{ userProfile.username }}</td>
-    </tr>
-    <tr *ngIf="userProfile.firstName">
-      <th scope="row">First name</th>
-      <td>{{ userProfile.firstName }}</td>
-    </tr>
-    <tr *ngIf="userProfile.lastName">
-      <th scope="row">Last name</th>
-      <td>{{ userProfile.lastName }}</td>
-    </tr>
-    <tr *ngIf="userProfile.email">
-      <th scope="row">E-mail</th>
-      <td>{{ userProfile.email }}</td>
-    </tr>
-    <tr>
-      <th scope="row">E-mail verified</th>
-      <td>{{ userProfile.emailVerified ? 'Yes' : 'No' }}</td>
-    </tr>
-  </table>
-</ng-container>
+<mat-list *ngIf="user">
+  <mat-divider></mat-divider>
+  <mat-list-item class="gradient-transition">
+    <div class="row">
+      <span class="header">Username</span>
+      <span>{{ user.username ? user.username : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item class="gradient-transition">
+    <div class="row">
+      <span class="header">First name</span>
+      <span>{{ user.firstName ? user.firstName : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item class="gradient-transition">
+    <div class="row">
+      <span class="header">Last name</span>
+      <span>{{ user.lastName ? user.lastName : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item class="gradient-transition">
+    <div class="row">
+      <span class="header">E-mail</span>
+      <span>{{ user.email ? user.email : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item class="gradient-transition">
+    <div class="row">
+      <span class="header">Created at</span>
+      <span>{{ user.createdTimestamp ? (user.createdTimestamp | date:'yyyy-MM-dd HH:mm:ss') : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
