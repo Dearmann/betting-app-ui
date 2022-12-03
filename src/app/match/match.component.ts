@@ -86,19 +86,16 @@ export class MatchComponent implements OnInit {
   }
 
   findUserBetAndRating() {
-    if (!this.userService?.userProfile?.id!) {
+    // Don't load user's bets and ratings if he is not logged in
+    if (!this.userService?.isLoggedIn) {
       return;
     }
-    this.userService.getUserInteractionsById(this.userService?.userProfile?.id!).subscribe({
-      next: response => {
-        this.userService.bets = response.bets;
-        this.userService.comments = response.comments;
-        this.userService.ratings = response.ratings;
-      },
+    this.userService.getUserWithInteractionsById(this.userService?.userProfile?.id!).subscribe({
+      next: response => this.userService.user = response,
       error: response => this.snackbarService.showError(response, 'Failed to retrieve user interactions'),
       complete: () => {
-        this.userBet = this.userService.bets.find(bet => bet.matchId === this.matchId);
-        this.userRating = this.userService.ratings.find(rating => rating.matchId === this.matchId);
+        this.userBet = this.userService.user!.bets.find(bet => bet.matchId === this.matchId);
+        this.userRating = this.userService.user!.ratings.find(rating => rating.matchId === this.matchId);
       }
     })
   }
