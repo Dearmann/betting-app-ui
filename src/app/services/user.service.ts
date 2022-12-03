@@ -3,11 +3,8 @@ import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 import { Observable } from 'rxjs';
-import { Bet } from '../model/bet';
-import { Comment } from '../model/comment';
-import { Rating } from '../model/rating';
 import { User } from '../model/user';
-import { UserRequest } from '../model/user-requesty';
+import { UserRequest } from '../model/user-request';
 import { SnackbarService } from './snackbar.service';
 
 @Injectable({
@@ -93,10 +90,8 @@ export class UserService {
     return this.httpClient.delete<void>(this.keycloakUrl + "/admin/" + userId);
   }
 
-  createRequestDto(username: string, password: string, email: string, firstname: string, lastname: string): UserRequest {
+  createRequestDto(email: string, firstname: string, lastname: string): UserRequest {
     return {
-      "username": username,
-      "password": password,
       "email": email,
       "firstName": firstname,
       "lastName": lastname,
