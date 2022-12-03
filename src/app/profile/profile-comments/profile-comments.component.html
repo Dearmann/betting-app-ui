@@ -19,7 +19,7 @@
         {{ matchMap.get(comment.id)?.team1?.name }} vs {{ matchMap.get(comment.id)?.team2?.name }}
       </span>
       <span class="column-message">
-        {{ (comment.message.length < 120) ? comment.message : (comment.message | slice:0:120) + '...' }}
+        {{ comment.message | truncate:120 }}
       </span>
       <span class="column-date">
         {{ comment.createdDateTime | date:'dd-MM-yyyy HH:mm:ss' }}
