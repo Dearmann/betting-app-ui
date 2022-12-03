@@ -1,0 +1,31 @@
+<mat-list *ngIf="comments && comments.length">
+  <mat-list-item class="gradient-transition-header">
+    <div class="flex-container">
+      <span class="column-match header">Match</span>
+      <span class="column-message header">Message</span>
+      <span class="column-date header">Creation date</span>
+    </div>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+  <mat-list-item
+  *ngFor="let comment of comments"
+  matRipple
+  class="gradient-transition"
+  [routerLink]="'/match/' + comment.matchId">
+
+    <div class="flex-container">
+      <span class="column-match">
+        {{ matchMap.get(comment.id)?.team1?.name }} vs {{ matchMap.get(comment.id)?.team2?.name }}
+      </span>
+      <span class="column-message">
+        {{ (comment.message.length < 120) ? comment.message : (comment.message | slice:0:120) + '...' }}
+      </span>
+      <span class="column-date">
+        {{ comment.createdDateTime | date:'dd-MM-yyyy HH:mm:ss' }}
+      </span>
+    </div>
+
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
