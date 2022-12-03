@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogConfirmDeleteComponent } from '../admin-panel/dialog-confirm-delete/dialog-confirm-delete.component';
-import { Comment } from "../model/comment";
-import { CommentService } from '../services/comment.service';
-import { SnackbarService } from '../services/snackbar.service';
-import { UserService } from '../services/user.service';
+import { DialogConfirmDeleteComponent } from '../../admin-panel/dialog-confirm-delete/dialog-confirm-delete.component';
+import { Comment } from "../../model/comment";
+import { CommentService } from '../../services/comment.service';
+import { SnackbarService } from '../../services/snackbar.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -31,7 +31,6 @@ export class CommentListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // this.getAllCommentsByMatchId(this.matchId);
   }
 
   getAllCommentsByMatchId(matchId: number) {

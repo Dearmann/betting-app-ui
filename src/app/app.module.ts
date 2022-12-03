@@ -15,7 +15,7 @@ import { initializeAppFactory } from './init/app-init.factory';
 import { ProfileComponent } from './profile/profile.component';
 import { ConfigService } from './config/config.service';
 import { MatCardModule } from '@angular/material/card';
-import { EventListComponent } from './event-list/event-list.component';
+import { EventListComponent } from './game-list/event-list/event-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -25,7 +25,6 @@ import { MatchListComponent } from './match-list/match-list.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TeamListComponent } from './team-list/team-list.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { AdminGameListComponent } from './admin-panel/admin-game-list/admin-game-list.component';
 import { AdminEventListComponent } from './admin-panel/admin-event-list/admin-event-list.component';
@@ -45,7 +44,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminUserListComponent } from './admin-panel/admin-user-list/admin-user-list.component';
 import { MatchComponent } from './match/match.component';
 import { StarRatingModule } from 'angular-star-rating';
-import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentListComponent } from './match/comment-list/comment-list.component';
 import { UserService } from './services/user.service';
 import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-result.component';
 
@@ -59,7 +58,6 @@ import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-r
     AdminPanelComponent,
     RankingComponent,
     MatchListComponent,
-    TeamListComponent,
     AdminGameListComponent,
     AdminEventListComponent,
     AdminTeamListComponent,

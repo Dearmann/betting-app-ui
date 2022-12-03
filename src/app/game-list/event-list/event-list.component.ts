@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Event } from '../model/event';
-import { Game } from '../model/game';
-import { EventService } from '../services/event.service';
-import { GameService } from '../services/game.service';
-import { MatchService } from '../services/match.service';
-import { SnackbarService } from '../services/snackbar.service';
+import { Event } from '../../model/event';
+import { Game } from '../../model/game';
+import { EventService } from '../../services/event.service';
+import { GameService } from '../../services/game.service';
+import { MatchService } from '../../services/match.service';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-event-list',
