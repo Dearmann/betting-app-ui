@@ -89,6 +89,10 @@ export class UserService {
     return this.httpClient.delete<void>(this.keycloakUrl + "/" + userId);
   }
 
+  privilegedDeleteUser(userId: string): Observable<void> {
+    return this.httpClient.delete<void>(this.keycloakUrl + "/admin/" + userId);
+  }
+
   createRequestDto(username: string, password: string, email: string, firstname: string, lastname: string): UserRequest {
     return {
       "username": username,
