@@ -55,6 +55,7 @@ export class RankingComponent implements OnInit {
           correctPredictions: (userCorrectBets.length / userFinishedBets.length) ? userCorrectBets.length / userFinishedBets.length : 0
         })
       })
+      this.usersBetInformation.sort((a, b) => b.correctPredictions - a.correctPredictions);
     }
   }
 
