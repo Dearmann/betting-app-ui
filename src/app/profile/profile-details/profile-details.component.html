@@ -31,7 +31,7 @@
   <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="primary"
     (click)="editButtonClicked()">Edit</button>
   <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="primary"
-    (click)="sendResetPasswordEmail()">Reset password</button>
+    (click)="resetPasswordButtonClicked()">Reset password</button>
   <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="warn"
     (click)="deleteButtonClicked()">Delete</button>
 </mat-list>

@@ -5,6 +5,7 @@ import { DialogConfirmDeleteComponent } from 'src/app/admin-panel/dialog-confirm
 import { User } from 'src/app/model/user';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
+import { DialogPasswordResetComponent } from '../dialog-password-reset/dialog-password-reset.component';
 
 @Component({
   selector: 'app-profile-details',
@@ -66,6 +67,15 @@ export class ProfileDetailsComponent implements OnInit {
         this.editingProfile = false;
         this.userService.loadUserData();
         this.getUserWithInteractionsById(this.user!.id);
+      }
+    });
+  }
+
+  resetPasswordButtonClicked() {
+    let resetPasswordDialog = this.dialog.open(DialogPasswordResetComponent);
+    resetPasswordDialog.afterClosed().subscribe(confirmation => {
+      if (confirmation) {
+        this.sendResetPasswordEmail();
       }
     });
   }
