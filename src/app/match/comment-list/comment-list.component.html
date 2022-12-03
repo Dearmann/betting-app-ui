@@ -3,7 +3,12 @@
     <mat-card *ngIf="comment.username" class="comment">
 
       <mat-card-header class="card-content">
-        <mat-card-title>{{comment.username}}</mat-card-title>
+        <mat-card-title
+        [routerLink]="'/profile/' + comment.userId"
+        routerLinkActive="active"
+        class="link">
+        {{comment.username}}
+        </mat-card-title>
         <mat-card-subtitle>{{comment.createdDateTime | date:'dd MMMM yyyy HH:mm:ss'}}</mat-card-subtitle>
 
         <button

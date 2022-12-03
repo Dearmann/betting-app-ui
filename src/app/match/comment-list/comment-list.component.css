@@ -7,6 +7,10 @@
   justify-content: space-between;
 }
 
+.link {
+  cursor: pointer;
+}
+
 .message {
   padding: 0 16px;
   margin-bottom: 0;
