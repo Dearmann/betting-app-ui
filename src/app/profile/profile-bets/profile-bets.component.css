@@ -2,15 +2,15 @@
   font-weight: bolder;
 }
 
-.user {
+.flex-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-.column-username {
-  width: 850px;
+.column-match {
+  width: 300px;
 }
 
 .column {

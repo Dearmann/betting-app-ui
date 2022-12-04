@@ -1,0 +1,28 @@
+<mat-list>
+  <mat-list-item class="gradient-transition-header">
+    <div class="flex-container">
+      <span class="header">Match</span>
+      <span class="header">Rating</span>
+    </div>
+  </mat-list-item>
+
+  <mat-progress-bar *ngIf="!ratings || !matches" mode="indeterminate"></mat-progress-bar>
+  <mat-divider></mat-divider>
+  <mat-list-item
+  *ngFor="let rating of ratings"
+  matRipple
+  class="gradient-transition"
+  [routerLink]="'/match/' + rating.matchId">
+
+    <div class="flex-container">
+      <span>
+        {{ matchMap.get(rating.id)?.team1?.name }} vs {{ matchMap.get(rating.id)?.team2?.name }}
+      </span>
+      <span>
+        <star-rating [rating]="rating.rating" [readOnly]="true" [direction]="'rtl'" class="rating"></star-rating>
+      </span>
+    </div>
+
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

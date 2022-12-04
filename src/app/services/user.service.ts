@@ -3,11 +3,8 @@ import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 import { Observable } from 'rxjs';
-import { Bet } from '../model/bet';
-import { Comment } from '../model/comment';
-import { Rating } from '../model/rating';
 import { User } from '../model/user';
-import { UserRequest } from '../model/user-requesty';
+import { UserRequest } from '../model/user-request';
 import { SnackbarService } from './snackbar.service';
 
 @Injectable({
@@ -15,9 +12,7 @@ import { SnackbarService } from './snackbar.service';
 })
 export class UserService {
 
-  public bets: Bet[] = [];
-  public comments: Comment[] = [];
-  public ratings: Rating[] = [];
+  public user: User | null | undefined;
   public isLoggedIn: boolean = false;
   public isAdmin: boolean = false;
   public userProfile: KeycloakProfile | null = null;
@@ -36,13 +31,9 @@ export class UserService {
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();
       this.isAdmin = this.keycloak.isUserInRole("ADMIN");
-      this.getUserInteractionsById(this.userProfile.id!).subscribe({
-        next: response => {
-          this.bets = response.bets;
-          this.comments = response.comments;
-          this.ratings = response.ratings;
-        },
-        error: response => this.snackbarService.showError(response, 'Failed to retrieve user interactions')
+      this.getUserWithInteractionsById(this.userProfile.id!).subscribe({
+        next: response => this.user = response,
+        error: response => this.snackbarService.showError(response, 'Failed to retrieve user with interactions')
       })
     }
   }
@@ -55,11 +46,11 @@ export class UserService {
     return this.httpClient.get<string>(this.userUrl + "/username/" + userId);
   }
 
-  getUserInteractionsById(userId: string): Observable<User> {
+  getUserWithInteractionsById(userId: string): Observable<User> {
     return this.httpClient.get<User>(this.userUrl + "/" + userId);
   }
 
-  getUserInteractionsByUsername(username: string): Observable<User> {
+  getUserWithInteractionsByUsername(username: string): Observable<User> {
     return this.httpClient.get<User>(this.userUrl + "/by-username/" + username);
   }
 
@@ -67,12 +58,12 @@ export class UserService {
     return this.httpClient.get<User[]>(this.keycloakUrl);
   }
 
-  getUserById(userId: string): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.keycloakUrl + "/" + userId);
+  getUserById(userId: string): Observable<User> {
+    return this.httpClient.get<User>(this.keycloakUrl + "/" + userId);
   }
 
-  getUserByUsername(username: string): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.keycloakUrl + "/by-username/" + username);
+  getUserByUsername(username: string): Observable<User> {
+    return this.httpClient.get<User>(this.keycloakUrl + "/by-username/" + username);
   }
 
   createUser(userRequest: UserRequest): Observable<number> {
@@ -95,10 +86,12 @@ export class UserService {
     return this.httpClient.delete<void>(this.keycloakUrl + "/" + userId);
   }
 
-  createRequestDto(username: string, password: string, email: string, firstname: string, lastname: string): UserRequest {
+  privilegedDeleteUser(userId: string): Observable<void> {
+    return this.httpClient.delete<void>(this.keycloakUrl + "/admin/" + userId);
+  }
+
+  createRequestDto(email: string, firstname: string, lastname: string): UserRequest {
     return {
-      "username": username,
-      "password": password,
       "email": email,
       "firstName": firstname,
       "lastName": lastname,

@@ -47,6 +47,13 @@ import { StarRatingModule } from 'angular-star-rating';
 import { CommentListComponent } from './match/comment-list/comment-list.component';
 import { UserService } from './services/user.service';
 import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-result.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ProfileDetailsComponent } from './profile/profile-details/profile-details.component';
+import { DialogPasswordResetComponent } from './profile/dialog-password-reset/dialog-password-reset.component';
+import { ProfileBetsComponent } from './profile/profile-bets/profile-bets.component';
+import { ProfileCommentsComponent } from './profile/profile-comments/profile-comments.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { ProfileRatingsComponent } from './profile/profile-ratings/profile-ratings.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +77,13 @@ import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-r
     AdminUserListComponent,
     MatchComponent,
     CommentListComponent,
-    DialogSetResultComponent
+    DialogSetResultComponent,
+    ProfileDetailsComponent,
+    DialogPasswordResetComponent,
+    ProfileBetsComponent,
+    ProfileCommentsComponent,
+    TruncatePipe,
+    ProfileRatingsComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +110,8 @@ import { DialogSetResultComponent } from './match/dialog-set-result/dialog-set-r
     FormsModule,
     MatInputModule,
     MatSnackBarModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    MatTabsModule
   ],
   providers: [
     ConfigService,

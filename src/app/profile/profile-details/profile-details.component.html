@@ -1,0 +1,59 @@
+<mat-progress-bar *ngIf="!user" mode="indeterminate"></mat-progress-bar>
+
+<mat-list *ngIf="user && !editingProfile">
+  <mat-list-item>
+    <div class="row">
+      <span class="header">First name:</span>
+      <span>{{ user.firstName ? user.firstName : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <div class="row">
+      <span class="header">Last name:</span>
+      <span>{{ user.lastName ? user.lastName : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <div class="row">
+      <span class="header">E-mail:</span>
+      <span>{{ user.email ? user.email : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <div class="row">
+      <span class="header">Created at:</span>
+      <span>{{ user.createdTimestamp ? (user.createdTimestamp | date:'yyyy-MM-dd HH:mm:ss') : '-' }}</span>
+    </div>
+  </mat-list-item>
+  <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="primary"
+    (click)="editButtonClicked()">Edit</button>
+  <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="primary"
+    (click)="resetPasswordButtonClicked()">Reset password</button>
+  <button class="action-button" *ngIf="loggedInUserId === user.id" mat-raised-button color="warn"
+    (click)="deleteButtonClicked()">Delete</button>
+</mat-list>
+
+<form [formGroup]="userForm" *ngIf="editingProfile">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matNativeControl matInput type="email" [email]="true">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input formControlName="firstName" matNativeControl matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input formControlName="lastName" matNativeControl matInput>
+  </mat-form-field>
+  <div>
+    <button mat-raised-button color="primary" type="submit" (click)="edit()" [disabled]="!userForm.valid"
+      style="margin-right: 15px;">
+      Edit
+    </button>
+    <button mat-raised-button color="primary" (click)="cancelButtonClicked()">Cancel</button>
+  </div>
+</form>

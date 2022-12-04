@@ -41,7 +41,7 @@ export class AdminUserListComponent implements OnInit {
   }
 
   deleteUser(userId: string) {
-    this.userService.deleteUser(userId).subscribe({
+    this.userService.privilegedDeleteUser(userId).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to delete user'),
       complete: () => {
         this.getAllRealmUsers();
