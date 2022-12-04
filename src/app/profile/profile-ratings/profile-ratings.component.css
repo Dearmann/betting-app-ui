@@ -1,0 +1,43 @@
+.header {
+  font-weight: bolder;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.rating {
+  margin: 5px 0 0 0;
+}
+
+.gradient-transition-header {
+  background: linear-gradient(white, rgb(80, 80, 80));
+  background: -o-linear-gradient(white, rgb(80, 80, 80));
+  background: -moz-linear-gradient(white, rgb(80, 80, 80));
+  background: -webkit-linear-gradient(white, rgb(80, 80, 80));
+  transition: background 300ms ease-out;
+  -o-transition: background 300ms ease-out;
+  -moz-transition: background 300ms ease-out;
+  -webkit-transition: background 300ms ease-out;
+  background-size: 1px 500px;
+}
+
+.gradient-transition {
+  background: linear-gradient(white, rgb(230, 230, 230));
+  background: -o-linear-gradient(white, rgb(230, 230, 230));
+  background: -moz-linear-gradient(white, rgb(230, 230, 230));
+  background: -webkit-linear-gradient(white, rgb(230, 230, 230));
+  transition: background 300ms ease-out;
+  -o-transition: background 300ms ease-out;
+  -moz-transition: background 300ms ease-out;
+  -webkit-transition: background 300ms ease-out;
+  background-size: 1px 500px;
+}
+
+.gradient-transition:hover {
+  background-position: 100px;
+  cursor: pointer;
+}

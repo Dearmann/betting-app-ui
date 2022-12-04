@@ -19,7 +19,9 @@
       <mat-tab label="Comments">
         <app-profile-comments [comments]="user.comments" [matches]="matches!"></app-profile-comments>
       </mat-tab>
-      <mat-tab label="Ratings"> Ratings </mat-tab>
+      <mat-tab label="Ratings">
+        <app-profile-ratings [ratings]="user.ratings" [matches]="matches!"></app-profile-ratings>
+      </mat-tab>
     </mat-tab-group>
   </mat-card-content>
 </mat-card>

@@ -53,6 +53,7 @@ import { DialogPasswordResetComponent } from './profile/dialog-password-reset/di
 import { ProfileBetsComponent } from './profile/profile-bets/profile-bets.component';
 import { ProfileCommentsComponent } from './profile/profile-comments/profile-comments.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { ProfileRatingsComponent } from './profile/profile-ratings/profile-ratings.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     DialogPasswordResetComponent,
     ProfileBetsComponent,
     ProfileCommentsComponent,
-    TruncatePipe
+    TruncatePipe,
+    ProfileRatingsComponent
   ],
   imports: [
     BrowserModule,
