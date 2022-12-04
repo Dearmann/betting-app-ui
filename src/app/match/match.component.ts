@@ -234,7 +234,7 @@ export class MatchComponent implements OnInit {
 
   setMatchResult(winnerTeamId: number) {
     this.matchService.setMatchResult(this.matchId, winnerTeamId).subscribe({
-      next: response => this.match = response,
+      next: response => this.match.winner = response.winner,
       error: response => this.snackbarService.showError(response, 'Error while setting match result')
     });
   }
