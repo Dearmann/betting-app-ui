@@ -136,7 +136,11 @@ export class MatchComponent implements OnInit {
     }
     // If match finished - can't place a bet
     if (this.match.winner !== Winner.TBD) {
-      return
+      return;
+    }
+    // If match has already started - can't place a bet
+    if (Date.now() - new Date(this.match.start).getTime() > 0) {
+      return;
     }
     // If user bet is present - PUT
     if (this.userBet !== undefined) {
