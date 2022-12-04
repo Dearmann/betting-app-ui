@@ -9,8 +9,8 @@ import { Match } from 'src/app/model/match';
 })
 export class ProfileBetsComponent implements OnInit, OnChanges {
 
-  @Input() bets: Bet[] = [];
-  @Input() matches: Match[] = [];
+  @Input() bets: Bet[] | undefined;
+  @Input() matches: Match[] | undefined;
   matchMap: Map<number, Match> = new Map<number, Match>();
 
   constructor() { }
@@ -20,7 +20,7 @@ export class ProfileBetsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.bets && this.matches && this.bets.length && this.matches.length) {
-      this.bets.forEach(bet => this.matchMap.set(bet.id, this.matches.find(match => match.id === bet.matchId)!));
+      this.bets.forEach(bet => this.matchMap.set(bet.id, this.matches?.find(match => match.id === bet.matchId)!));
     }
   }
 

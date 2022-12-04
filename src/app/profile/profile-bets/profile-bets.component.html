@@ -1,4 +1,4 @@
-<mat-list *ngIf="bets && bets.length">
+<mat-list>
   <mat-list-item class="gradient-transition-header">
     <div class="flex-container">
       <span class="column-match header">Match</span>
@@ -8,6 +8,7 @@
     </div>
   </mat-list-item>
 
+  <mat-progress-bar *ngIf="!bets || !matches" mode="indeterminate"></mat-progress-bar>
   <mat-divider></mat-divider>
   <mat-list-item
   *ngFor="let bet of bets"

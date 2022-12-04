@@ -9,8 +9,8 @@ import { Rating } from 'src/app/model/rating';
 })
 export class ProfileRatingsComponent implements OnInit, OnChanges {
 
-  @Input() ratings: Rating[] = [];
-  @Input() matches: Match[] = [];
+  @Input() ratings: Rating[] | undefined;
+  @Input() matches: Match[] | undefined;
   matchMap: Map<number, Match> = new Map<number, Match>();
 
   constructor() { }
@@ -20,7 +20,7 @@ export class ProfileRatingsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.ratings && this.matches && this.ratings.length && this.matches.length) {
-      this.ratings.forEach(rating => this.matchMap.set(rating.id, this.matches.find(match => match.id === rating.matchId)!));
+      this.ratings.forEach(rating => this.matchMap.set(rating.id, this.matches?.find(match => match.id === rating.matchId)!));
     }
   }
 

@@ -9,8 +9,8 @@ import { Match } from 'src/app/model/match';
 })
 export class ProfileCommentsComponent implements OnInit, OnChanges {
 
-  @Input() comments: Comment[] = [];
-  @Input() matches: Match[] = [];
+  @Input() comments: Comment[] | undefined;
+  @Input() matches: Match[] | undefined;
   matchMap: Map<number, Match> = new Map<number, Match>();
 
   constructor() { }
@@ -20,7 +20,7 @@ export class ProfileCommentsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.comments && this.matches && this.comments.length && this.matches.length) {
-      this.comments.forEach(comment => this.matchMap.set(comment.id, this.matches.find(match => match.id === comment.matchId)!));
+      this.comments.forEach(comment => this.matchMap.set(comment.id, this.matches?.find(match => match.id === comment.matchId)!));
     }
   }
 

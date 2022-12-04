@@ -1,4 +1,4 @@
-<mat-list *ngIf="ratings && ratings.length">
+<mat-list>
   <mat-list-item class="gradient-transition-header">
     <div class="flex-container">
       <span class="header">Match</span>
@@ -6,6 +6,7 @@
     </div>
   </mat-list-item>
 
+  <mat-progress-bar *ngIf="!ratings || !matches" mode="indeterminate"></mat-progress-bar>
   <mat-divider></mat-divider>
   <mat-list-item
   *ngFor="let rating of ratings"
