@@ -12,7 +12,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Season</mat-label>
-    <input [formControl]="seasonControl" matNativeControl matInput>
+    <input [formControl]="seasonControl" matNativeControl matInput type="number">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -34,7 +34,7 @@
     </mat-select>
   </mat-form-field>
 
-  <button *ngIf="eventId === 0" type="submit" mat-raised-button (click)="create()">Create</button>
-  <button *ngIf="eventId !== 0" type="submit" mat-raised-button (click)="edit()">Edit</button>
+  <button *ngIf="eventId === 0" type="submit" mat-raised-button (click)="create()" [disabled]="!eventForm.valid">Create</button>
+  <button *ngIf="eventId !== 0" type="submit" mat-raised-button (click)="edit()" [disabled]="!eventForm.valid">Edit</button>
 
 </form>

@@ -55,7 +55,7 @@
     </mat-select>
   </mat-form-field>
 
-  <button *ngIf="matchId === 0" type="submit" mat-raised-button (click)="create()">Create</button>
-  <button *ngIf="matchId !== 0" type="submit" mat-raised-button (click)="edit()">Edit</button>
+  <button *ngIf="matchId === 0" type="submit" mat-raised-button (click)="create()" [disabled]="!matchForm.valid">Create</button>
+  <button *ngIf="matchId !== 0" type="submit" mat-raised-button (click)="edit()" [disabled]="!matchForm.valid">Edit</button>
   
 </form>

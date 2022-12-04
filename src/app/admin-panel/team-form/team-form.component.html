@@ -19,7 +19,7 @@
     </mat-select>
   </mat-form-field>
 
-  <button *ngIf="teamId === 0" type="submit" mat-raised-button (click)="create()">Create</button>
-  <button *ngIf="teamId !== 0" type="submit" mat-raised-button (click)="edit()">Edit</button>
+  <button *ngIf="teamId === 0" type="submit" mat-raised-button (click)="create()" [disabled]="!teamForm.valid">Create</button>
+  <button *ngIf="teamId !== 0" type="submit" mat-raised-button (click)="edit()" [disabled]="!teamForm.valid">Edit</button>
 
 </form>

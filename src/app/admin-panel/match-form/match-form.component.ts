@@ -27,7 +27,7 @@ export class MatchFormComponent implements OnInit {
   team1IdControl: FormControl = new FormControl({value: '', disabled: true});
   team2IdControl: FormControl = new FormControl({value: '', disabled: true});
 
-  gameIdControl: FormControl = new FormControl(0);
+  gameIdControl: FormControl = new FormControl('');
 
   allGames: Game[] = [];
   allEvents: Event[] = [];
@@ -47,9 +47,10 @@ export class MatchFormComponent implements OnInit {
       winner: this.winnerControl,
       start: this.startControl,
       end: this.endControl,
+      gameId: this.gameIdControl,
       eventId: this.eventIdControl,
-      team1: this.team1IdControl,
-      team2: this.team2IdControl
+      team1Id: this.team1IdControl,
+      team2Id: this.team2IdControl
     });
   }
 
@@ -80,8 +81,8 @@ export class MatchFormComponent implements OnInit {
         this.startControl.setValue(response.start);
         this.endControl.setValue(response.end);
         this.eventIdControl.setValue(response.eventId);
-        this.team1IdControl.setValue(response.team1);
-        this.team2IdControl.setValue(response.team2);
+        this.team1IdControl.setValue(response.team1.id);
+        this.team2IdControl.setValue(response.team2.id);
       },
       error: response => this.snackbarService.showError(response, 'Failed to retrieve match')
     });
