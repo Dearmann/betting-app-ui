@@ -5,14 +5,12 @@ import { KeycloakProfile } from 'keycloak-js';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { UserRequest } from '../model/user-request';
-import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public user: User | null | undefined;
   public isLoggedIn: boolean = false;
   public isAdmin: boolean = false;
   public userProfile: KeycloakProfile | null = null;
@@ -22,7 +20,6 @@ export class UserService {
 
   constructor(
     private httpClient: HttpClient,
-    private readonly snackbarService: SnackbarService,
     public readonly keycloak: KeycloakService
   ) { }
 
@@ -31,10 +28,6 @@ export class UserService {
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();
       this.isAdmin = this.keycloak.isUserInRole("ADMIN");
-      this.getUserWithInteractionsById(this.userProfile.id!).subscribe({
-        next: response => this.user = response,
-        error: response => this.snackbarService.showError(response, 'Failed to retrieve user with interactions')
-      })
     }
   }
 

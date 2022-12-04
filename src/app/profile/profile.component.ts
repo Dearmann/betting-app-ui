@@ -29,14 +29,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     if (this.userId) {
       this.getUserWithInteractionsById(this.userId);
+      this.getAllMatches();
     }
-    else if (!this.userService.user && this.userService.isLoggedIn) {
+    else if (this.userService.isLoggedIn) {
       this.getUserWithInteractionsById(this.userService.userProfile?.id!);
+      this.getAllMatches();
     }
-    else {
-      this.user = this.userService.user!;
-    }
-    this.getAllMatches();
   }
 
   getUserWithInteractionsById(userId: string) {

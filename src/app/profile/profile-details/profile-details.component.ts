@@ -15,7 +15,7 @@ import { DialogPasswordResetComponent } from '../dialog-password-reset/dialog-pa
 export class ProfileDetailsComponent implements OnInit {
 
   @Input() user: User | null | undefined;
-  loggedInUserId: string = '';
+  loggedInUserId: string | undefined;
   editingProfile: boolean = false;
 
   userForm: FormGroup;
@@ -33,7 +33,7 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => this.loggedInUserId = this.userService.user?.id!, 10);
+    setTimeout(() => this.loggedInUserId = this.userService.userProfile!.id, 10);
   }
 
   getUserWithInteractionsById(userId: string) {

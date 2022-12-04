@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Bet } from '../model/bet';
 import { Match } from '../model/match';
 import { Rating } from '../model/rating';
+import { User } from '../model/user';
 import { Winner } from '../model/winner';
 import { BetService } from '../services/bet.service';
 import { CommentService } from '../services/comment.service';
@@ -24,6 +25,7 @@ export class MatchComponent implements OnInit {
   matchId: number;
   match!: Match;
   userId: string;
+  user!: User;
 
   averageRating: number = 0;
   betPercentageTeam1: number = 0;
@@ -91,11 +93,11 @@ export class MatchComponent implements OnInit {
       return;
     }
     this.userService.getUserWithInteractionsById(this.userService?.userProfile?.id!).subscribe({
-      next: response => this.userService.user = response,
+      next: response => this.user = response,
       error: response => this.snackbarService.showError(response, 'Failed to retrieve user interactions'),
       complete: () => {
-        this.userBet = this.userService.user!.bets.find(bet => bet.matchId === this.matchId);
-        this.userRating = this.userService.user!.ratings.find(rating => rating.matchId === this.matchId);
+        this.userBet = this.user.bets.find(bet => bet.matchId === this.matchId);
+        this.userRating = this.user.ratings.find(rating => rating.matchId === this.matchId);
       }
     })
   }
@@ -178,7 +180,6 @@ export class MatchComponent implements OnInit {
       complete: () => {
         this.getAllCommentsByMatchId(this.matchId);
         this.messageControl.setValue('');
-        this.userService.loadUserData();
       }
     });
   }
