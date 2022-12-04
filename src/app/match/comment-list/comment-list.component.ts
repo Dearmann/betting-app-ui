@@ -56,6 +56,7 @@ export class CommentListComponent implements OnInit {
       complete: () => {
         this.editingCommentId = 0;
         this.getAllCommentsByMatchId(this.matchId);
+        this.userService.loadUserData();
       }
     });
   }
@@ -74,7 +75,10 @@ export class CommentListComponent implements OnInit {
   deleteComment(commentId: number) {
     this.commentService.deleteComment(commentId).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to delete comment'),
-      complete: () => this.getAllCommentsByMatchId(this.matchId)
+      complete: () => {
+        this.getAllCommentsByMatchId(this.matchId);
+        this.userService.loadUserData();
+      }
     })
   }
 

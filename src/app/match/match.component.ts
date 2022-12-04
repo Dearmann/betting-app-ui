@@ -174,6 +174,7 @@ export class MatchComponent implements OnInit {
       complete: () => {
         this.getAllCommentsByMatchId(this.matchId);
         this.messageControl.setValue('');
+        this.userService.loadUserData();
       }
     });
   }
