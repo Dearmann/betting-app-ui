@@ -1,6 +1,6 @@
-<mat-progress-bar *ngIf="!(bets.length && users.length)" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="!(bets && users)" mode="indeterminate"></mat-progress-bar>
 
-<mat-list *ngIf="(bets.length && users.length)">
+<mat-list *ngIf="(bets && users)">
   <mat-list-item class="gradient-transition-header">
     <div class="user">
       <span class="column header">Position</span>

@@ -9,7 +9,7 @@ import { TeamRequest } from '../model/team-request';
 })
 export class TeamService {
 
-  private readonly backendUrl = "http://localhost:8080/teams";
+  private readonly backendUrl = "/api/teams";
 
   constructor(private httpClient: HttpClient) { }
 

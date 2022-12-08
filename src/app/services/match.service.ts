@@ -10,7 +10,7 @@ import { Winner } from '../model/winner';
 })
 export class MatchService {
 
-  private readonly backendUrl = "http://localhost:8080/matches";
+  private readonly backendUrl = "/api/matches";
 
   constructor(private readonly httpClient: HttpClient) { }
 

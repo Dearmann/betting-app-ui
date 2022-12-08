@@ -9,7 +9,7 @@ import { CommentRequest } from '../model/comment-request';
 })
 export class CommentService {
 
-  private readonly backendUrl = "http://localhost:8080/comments";
+  private readonly backendUrl = "/api/comments";
 
   constructor(private httpClient: HttpClient) { }
 

@@ -9,7 +9,7 @@ import { RatingRequest } from '../model/rating-request';
 })
 export class RatingService {
 
-  private readonly backendUrl = "http://localhost:8080/ratings";
+  private readonly backendUrl = "/api/ratings";
 
   constructor(private httpClient: HttpClient) { }
 

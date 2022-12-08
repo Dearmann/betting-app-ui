@@ -13,8 +13,8 @@ import { UserService } from '../services/user.service';
 })
 export class RankingComponent implements OnInit {
 
-  bets: Bet[] = [];
-  users: User[] = [];
+  bets: Bet[] | undefined;
+  users: User[] | undefined;
   usersBetInformation: UserBetInformation[] = [];
 
   constructor(
@@ -47,9 +47,9 @@ export class RankingComponent implements OnInit {
 
   fillUserWithBetsMap() {
     // If bets and users are already loaded -> fill UserBetInformation
-    if (this.bets.length && this.users.length) {
+    if (this.bets && this.users) {
       this.users.forEach(user => {
-        let userFinishedBets: Bet[] = this.bets.filter(bet => (bet.matchFinished && bet.userId === user.id));
+        let userFinishedBets: Bet[] = this.bets!.filter(bet => (bet.matchFinished && bet.userId === user.id));
         let userCorrectBets: Bet[] = userFinishedBets.filter(userBet => userBet.correctPrediction);
         this.usersBetInformation.push({
           user: user,

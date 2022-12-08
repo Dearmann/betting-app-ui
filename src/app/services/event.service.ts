@@ -9,7 +9,7 @@ import { EventRequest } from '../model/event-request';
 })
 export class EventService {
 
-  private readonly backendUrl = "http://localhost:8080/events";
+  private readonly backendUrl = "/api/events";
 
   constructor(private readonly httpClient: HttpClient) { }
 

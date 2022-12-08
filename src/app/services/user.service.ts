@@ -15,8 +15,8 @@ export class UserService {
   public isAdmin: boolean = false;
   public userProfile: KeycloakProfile | null = null;
 
-  private readonly userUrl = "http://localhost:8080/users";
-  private readonly keycloakUrl = "http://localhost:8080/keycloak";
+  private readonly userUrl = "/api/users";
+  private readonly keycloakUrl = "/api/keycloak";
 
   constructor(
     private httpClient: HttpClient,

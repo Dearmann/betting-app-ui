@@ -9,7 +9,7 @@ import { BetRequest } from '../model/bet-request';
 })
 export class BetService {
 
-  private readonly backendUrl = "http://localhost:8080/bets";
+  private readonly backendUrl = "/api/bets";
 
   constructor(private httpClient: HttpClient) { }
 

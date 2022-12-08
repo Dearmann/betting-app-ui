@@ -9,7 +9,7 @@ import { GameRequest } from '../model/game-request';
 })
 export class GameService {
 
-  private readonly backendUrl = "http://localhost:8080/games";
+  private readonly backendUrl = "/api/games";
 
   constructor(private httpClient: HttpClient) { }
 
