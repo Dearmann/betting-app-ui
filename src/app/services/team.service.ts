@@ -37,6 +37,10 @@ export class TeamService {
     return this.httpClient.delete<void>(this.backendUrl + "/" + teamId);
   }
 
+  getAllTeamLogos(): Observable<string[]> {
+    return this.httpClient.get<string[]>(this.backendUrl + "/logo");
+  }
+
   createRequestDto(name: string, logoUrl: string, gameId: number): TeamRequest {
     return {
       "name": name,

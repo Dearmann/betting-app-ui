@@ -13,6 +13,7 @@ import { TeamService } from 'src/app/services/team.service';
 export class TeamFormComponent implements OnInit {
 
   @Input() public teamId: number = 0;
+  logoUrls: string[] = [];
 
   teamForm: FormGroup;
   nameControl: FormControl = new FormControl('');
@@ -33,6 +34,7 @@ export class TeamFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllGames();
+    this.getAllTeamLogos();
   }
 
   ngOnChanges(): void {
@@ -85,6 +87,13 @@ export class TeamFormComponent implements OnInit {
     this.gameService.getAllGames().subscribe({
       next: response => this.games = response,
       error: response => this.snackbarService.showError(response, 'Failed to retrieve games')
+    });
+  }
+
+  getAllTeamLogos() {
+    this.teamService.getAllTeamLogos().subscribe({
+      next: response => this.logoUrls = response,
+      error: response => this.snackbarService.showError(response, 'Failed to get team logo URLs')
     });
   }
 

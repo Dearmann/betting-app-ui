@@ -8,3 +8,13 @@ form {
 .mat-form-field {
   width: 400px;
 }
+
+.logo-option {
+  height: 75px;
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  height: 55px;
+}

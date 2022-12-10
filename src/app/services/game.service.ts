@@ -33,6 +33,10 @@ export class GameService {
     return this.httpClient.delete<void>(this.backendUrl + "/" + gameId);
   }
 
+  getAllGameLogos(): Observable<string[]> {
+    return this.httpClient.get<string[]>(this.backendUrl + "/logo");
+  }
+
   createRequestDto(name: string, logoUrl: string): GameRequest {
     return {
       "name": name,

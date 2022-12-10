@@ -7,7 +7,17 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Logo URL</mat-label>
-    <input [formControl]="logoUrlControl" matNativeControl matInput>
+    <input
+    type="text"
+    placeholder="Logo URL"
+    matInput
+    [formControl]="logoUrlControl"
+    [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let logoUrl of logoUrls" [value]="logoUrl" class="logo-option">
+        <img [src]="logoUrl" class="logo">
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
 
   <mat-form-field appearance="fill" *ngIf="teamId === 0">

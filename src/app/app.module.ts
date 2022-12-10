@@ -54,6 +54,7 @@ import { ProfileBetsComponent } from './profile/profile-bets/profile-bets.compon
 import { ProfileCommentsComponent } from './profile/profile-comments/profile-comments.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { ProfileRatingsComponent } from './profile/profile-ratings/profile-ratings.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { ProfileRatingsComponent } from './profile/profile-ratings/profile-ratin
     MatInputModule,
     MatSnackBarModule,
     StarRatingModule.forRoot(),
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule
   ],
   providers: [
     ConfigService,

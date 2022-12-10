@@ -11,6 +11,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 export class GameFormComponent implements OnInit, OnChanges {
 
   @Input() public gameId: number = 0;
+  logoUrls: string[] = [];
   
   gameForm: FormGroup;
   nameControl: FormControl = new FormControl('');
@@ -24,6 +25,7 @@ export class GameFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.getAllGameLogos();
   }
 
   ngOnChanges(): void {
@@ -59,6 +61,13 @@ export class GameFormComponent implements OnInit, OnChanges {
     this.gameService.editGame(gameRequestDto, this.gameId).subscribe({
       error: response => this.snackbarService.showError(response, 'Failed to edit game'),
       complete: () => this.snackbarService.showSuccess('Game edited successfully')
+    });
+  }
+
+  getAllGameLogos() {
+    this.gameService.getAllGameLogos().subscribe({
+      next: response => this.logoUrls = response,
+      error: response => this.snackbarService.showError(response, 'Failed to get game logo URLs')
     });
   }
 
