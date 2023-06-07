@@ -18,7 +18,8 @@ export function initializeAppFactory(keycloak: KeycloakService, configService: C
             initOptions: {
               onLoad: 'check-sso',
               silentCheckSsoRedirectUri:
-                window.location.origin + '/assets/silent-check-sso.html'
+                window.location.origin + '/assets/silent-check-sso.html',
+              checkLoginIframe: false
             }
           }))
         })
